@@ -1,0 +1,85 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        canvas: '#FAF7F2',
+        mulmul: {
+          DEFAULT: '#FFFDF9',
+          50: '#FFFFFF',
+          100: '#FFFDF9',
+          200: '#FAF6EF',
+          300: '#F4ECE0',
+          400: '#EADFCF',
+        },
+        ivory: {
+          50: '#FDFBF7',
+          100: '#FBF7F0',
+          200: '#F4EEE2',
+          300: '#ECE2D0',
+          400: '#E2D3BB',
+        },
+        royal: {
+          emerald: '#0F382A',
+          emeraldDark: '#0A271D',
+          emeraldLight: '#18543F',
+          gold: '#C5A880',
+          goldLight: '#DFCDA7',
+        },
+        awadh: {
+          50: '#FDF9EE',
+          100: '#F9F0D6',
+          200: '#F3E0AC',
+          300: '#E8CA76',
+          400: '#DBB146',
+          500: '#C59A2C',
+          600: '#A98121',
+          700: '#846217',
+          800: '#644812',
+          900: '#432E0A',
+        },
+        terracotta: {
+          50: '#FDF5F2',
+          100: '#F9E7E1',
+          200: '#F4CEBF',
+          300: '#EBA896',
+          400: '#E1826B',
+          500: '#D56348',
+          600: '#B9492E',
+          700: '#92361F',
+        },
+        sage: {
+          50: '#F5F8F5',
+          100: '#E8EFE8',
+          200: '#D2DDD2',
+          300: '#B2C4B2',
+          400: '#8DA88E',
+          500: '#6B8C6C',
+          600: '#537154',
+          700: '#3F5640',
+        },
+        charcoal: {
+          500: '#736B65',
+          600: '#5A534E',
+          700: '#433D39',
+          800: '#2F2B28',
+          900: '#1F1C1B',
+        },
+      },
+      fontFamily: {
+        serif: ['"Cormorant Garamond"', 'Playfair Display', 'Georgia', 'serif'],
+        sans: ['"Plus Jakarta Sans"', 'Inter', '-apple-system', 'sans-serif'],
+      },
+      boxShadow: {
+        'soft-glow': '0 4px 25px -4px rgba(197, 168, 128, 0.25)',
+        'craft-card': '0 2px 16px -2px rgba(90, 83, 78, 0.06), 0 0 1px 1px rgba(197, 168, 128, 0.2)',
+        'subtle': '0 2px 10px 0 rgba(0, 0, 0, 0.03), 0 1px 3px 0 rgba(0, 0, 0, 0.02)',
+      },
+    },
+  },
+  plugins: [],
+}

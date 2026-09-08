@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #FAF7F2;
+    color: #2F2B28;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  h1, h2, h3, h4, .font-serif {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+}
+
+/* Custom scrollbar in light artisanal gold */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F4EEE2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #DBB146;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C59A2C;
+}
+
+/* Subtle gold border glow */
+.gold-leaf-border {
+  border: 1px solid rgba(197, 154, 44, 0.25);
+  box-shadow: 0 4px 20px -2px rgba(197, 154, 44, 0.08);
+}
+
+.gold-leaf-border:hover {
+  border-color: rgba(197, 154, 44, 0.5);
+  box-shadow: 0 6px 25px -2px rgba(197, 154, 44, 0.16);
+}
+
+/* Subtle textile grain pattern */
+.textile-texture {
+  background-color: #FAF7F2;
+  background-image: radial-gradient(rgba(197, 154, 44, 0.08) 1px, transparent 0);
+  background-size: 24px 24px;
+}
