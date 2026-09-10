@@ -1,301 +1,300 @@
-import React, { useState, useEffect } from 'react';
-import Navbar from './components/Navbar';
-import HeroBanner from './components/HeroBanner';
-import CraftDnaInspector from './components/CraftDnaInspector';
-import KarigarStudio from './components/KarigarStudio';
-import RawMaterialPool from './components/RawMaterialPool';
-import Marketplace from './components/Marketplace';
-import ClusterMap from './components/ClusterMap';
-import FairPriceCalculator from './components/FairPriceCalculator';
-import ArtisanDashboard from './components/ArtisanDashboard';
-import AdminPortal from './components/AdminPortal';
-import ProductDetailModal from './components/ProductDetailModal';
-import CustomBatchModal from './components/CustomBatchModal';
-import GiPassportModal from './components/GiPassportModal';
-import CartDrawer from './components/CartDrawer';
-import Footer from './components/Footer';
-import { 
-  getInitialArtisans, 
-  getInitialProducts, 
-  saveStoredArtisans, 
-  saveStoredProducts, 
-  resetStorageToDefaults 
-} from './services/storage';
-import { QrCode, X, ArrowRight, ShieldCheck, Sparkles } from 'lucide-react';
+import React, { useState } from 'react';
+import { LoginPage } from './components/LoginPage';
+import { Header } from './components/Header';
+import { PersonaBar } from './components/PersonaBar';
+import { CurrentWeatherHero } from './components/CurrentWeatherHero';
+import { VoiceAssistantWidget } from './components/VoiceAssistantWidget';
+import { PersonaWidgets } from './components/PersonaWidgets';
+import { HourlyAndWeeklyForecast } from './components/HourlyAndWeeklyForecast';
+import { SafetyHub } from './components/SafetyHub';
+import { WeatherNoticeBoard } from './components/WeatherNoticeBoard';
+import { NavigationMenuDrawer } from './components/NavigationMenuDrawer';
+import { CrowdsourceModal } from './components/CrowdsourceModal';
+import { MausamPrismModal } from './components/voice/MausamPrismModal';
+import { Footer } from './components/Footer';
+import { MoESDashboard } from './components/moes/MoESDashboard';
+import { ArrowLeft, Radio, ShieldCheck, Calendar, Sparkles } from 'lucide-react';
 
 export default function App() {
-  const [roleMode, setRoleMode] = useState('buyer'); // 'buyer' | 'artisan' | 'admin'
-  const [language, setLanguage] = useState('en'); // 'en' | 'hi'
-  const [activeTab, setActiveTab] = useState('marketplace'); // 'marketplace', 'provenance', 'calculator', 'materials', 'clusters', 'studio'
-  
-  // Persistent data state
-  const [artisans, setArtisans] = useState(getInitialArtisans);
-  const [products, setProducts] = useState(getInitialProducts);
-  const [selectedProductId, setSelectedProductId] = useState(() => {
-    const prods = getInitialProducts();
-    return prods[0]?.id || 'LKO-CHK-8841';
-  });
+  // Authentication State: null (shows LoginPage) | 'citizen' | 'moes'
+  const [userRole, setUserRole] = useState(null);
 
-  const [cart, setCart] = useState([]);
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  const [activeProductDetail, setActiveProductDetail] = useState(null);
-  const [activeCustomBatch, setActiveCustomBatch] = useState(null);
-  const [passportProduct, setPassportProduct] = useState(null);
-  const [isScanModalOpen, setIsScanModalOpen] = useState(false);
-  const [tagInput, setTagInput] = useState('');
+  // Active View: 'home' | 'notice' | 'safety' | 'forecast' | 'moes'
+  const [activeView, setActiveView] = useState('home');
 
-  // Save to localStorage when artisans change
-  const handleAddArtisan = (newArtisan) => {
-    const updated = [newArtisan, ...artisans];
-    setArtisans(updated);
-    saveStoredArtisans(updated);
-  };
+  // Active 5-Color Alert Level (Managed by MoES): 'green' | 'yellow' | 'orange' | 'red' | 'purple'
+  const [activeAlertLevel, setActiveAlertLevel] = useState('orange');
 
-  // Save to localStorage when products change
-  const handleAddProduct = (newProduct) => {
-    const updated = [newProduct, ...products];
-    setProducts(updated);
-    saveStoredProducts(updated);
-    setSelectedProductId(newProduct.id);
-  };
+  // Selected City: 'delhi', 'mumbai', 'lucknow', 'shimla'
+  const [cityId, setCityId] = useState('delhi');
 
-  // Reset to default seed records
-  const handleResetData = () => {
-    if (confirm('Are you sure you want to reset to initial Chowk seed records? Any custom data will be cleared.')) {
-      resetStorageToDefaults();
-      window.location.reload();
-    }
-  };
+  // Active Persona: 'student', 'farmer', 'senior_health', 'commuter', 'fitness', 'coastal', 'traveler', 'event'
+  const [activePersona, setActivePersona] = useState('student');
 
-  // Import JSON records
-  const handleImportData = (importedArtisans, importedProducts) => {
-    setArtisans(importedArtisans);
-    setProducts(importedProducts);
-    saveStoredArtisans(importedArtisans);
-    saveStoredProducts(importedProducts);
-    if (importedProducts.length > 0) {
-      setSelectedProductId(importedProducts[0].id);
-    }
-  };
+  // Language: 'en' or 'hi'
+  const [lang, setLang] = useState('hi');
 
-  const handleAddToCart = (product) => {
-    setCart((prev) => [...prev, product]);
-    setIsCartOpen(true);
-  };
+  // Font Scaling (Standard, Large, Extra Large)
+  const [fontScale, setFontScale] = useState('standard');
 
-  const handleRemoveFromCart = (index) => {
-    setCart((prev) => prev.filter((_, i) => i !== index));
-  };
+  // High Contrast Accessibility Mode
+  const [highContrast, setHighContrast] = useState(false);
 
-  const handleClearCart = () => {
-    setCart([]);
-  };
+  // 3-Dots Navigation Drawer State
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const handleScanSubmit = (e) => {
-    e.preventDefault();
-    const query = tagInput.trim().toUpperCase();
-    const found = products.find((p) => p.tagId.toUpperCase().includes(query) || p.name.toUpperCase().includes(query));
-    if (found) {
-      setSelectedProductId(found.id);
-      setRoleMode('buyer');
-      setActiveTab('provenance');
-      setIsScanModalOpen(false);
-      setTagInput('');
+  // Crowdsource Modal State
+  const [isCrowdsourceOpen, setIsCrowdsourceOpen] = useState(false);
+  const [isVoicePrismOpen, setIsVoicePrismOpen] = useState(false);
+
+  // Login handler
+  const handleLogin = (role) => {
+    setUserRole(role);
+    if (role === 'citizen') {
+      setActiveView('home');
     } else {
-      alert(`Tag ID "${tagInput}" not found in current demo registry. Try LKO-CHK-8841 or check the Kendra Admin portal.`);
+      setActiveView('moes');
     }
   };
+
+  // Logout handler
+  const handleLogout = () => {
+    setUserRole(null);
+    setActiveView('home');
+    setIsMenuOpen(false);
+  };
+
+  // Show Login Screen if unauthenticated
+  if (!userRole) {
+    return (
+      <LoginPage
+        onLogin={handleLogin}
+        lang={lang}
+        setLang={setLang}
+      />
+    );
+  }
 
   return (
-    <div className="min-h-screen bg-[#FAF7F2] text-[#2F2B28] flex flex-col selection:bg-[#F3E0AC] selection:text-[#432E0A]">
-      {/* Top Navigation with 3-Role Switch and Language Selector */}
-      <Navbar
-        roleMode={roleMode}
-        setRoleMode={setRoleMode}
-        language={language}
-        setLanguage={setLanguage}
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        onScanClick={() => setIsScanModalOpen(true)}
-        cartCount={cart.length}
-        setIsCartOpen={setIsCartOpen}
+    <div className={`min-h-screen transition-colors duration-200 ${
+      highContrast ? 'high-contrast' : ''
+    } font-scale-${fontScale}`}>
+      {/* Top Header with Threat Color Badge & 3-Dots Menu Button */}
+      <Header
+        activeView={activeView}
+        onOpenVoicePrism={() => setIsVoicePrismOpen(true)}
+        setActiveView={setActiveView}
+        userRole={userRole}
+        activeAlertLevel={activeAlertLevel}
+        onOpenMenu={() => setIsMenuOpen(true)}
+        onOpenNotice={() => setActiveView('notice')}
+        lang={lang}
       />
 
-      {/* Main Container */}
-      <main className="flex-1">
-        
-        {/* KENDRA ADMIN PORTAL (REAL DATA ONBOARDING) */}
-        {roleMode === 'admin' && (
-          <AdminPortal
-            artisans={artisans}
-            onAddArtisan={handleAddArtisan}
-            products={products}
-            onAddProduct={handleAddProduct}
-            onResetData={handleResetData}
-            onImportData={handleImportData}
-            language={language}
+      {/* Main Modular View Router */}
+      {/* VIEW 1: Clean, Focused Homepage */}
+      {activeView === 'home' && (
+        <main className="animate-fadeIn pb-12">
+          {/* Persona Selection Bar (Ages 10 to 80+) */}
+          <PersonaBar
+            activePersona={activePersona}
+            onSelectPersona={setActivePersona}
+            lang={lang}
           />
-        )}
 
-        {/* ARTISAN MODE VIEW */}
-        {roleMode === 'artisan' && (
-          <ArtisanDashboard language={language} />
-        )}
+          {/* Current Weather Hero Card */}
+          <CurrentWeatherHero
+            cityId={cityId}
+            setCityId={setCityId}
+            activePersona={activePersona}
+            activeAlertLevel={activeAlertLevel}
+            onOpenNotice={() => setActiveView('notice')}
+            lang={lang}
+            onOpenCrowdsource={() => setIsCrowdsourceOpen(true)}
+          />
 
-        {/* BUYER MODE VIEWS */}
-        {roleMode === 'buyer' && (
-          <>
-            {activeTab === 'marketplace' && (
-              <>
-                <HeroBanner
-                  setActiveTab={setActiveTab}
-                  onScanClick={() => setIsScanModalOpen(true)}
-                />
-                <Marketplace
-                  onSelectProduct={(productId) => {
-                    setSelectedProductId(productId);
-                    setActiveTab('provenance');
-                  }}
-                  onAddToCart={handleAddToCart}
-                  onOpenProductDetail={(prod) => setActiveProductDetail(prod)}
-                  onOpenCustomBatch={(prod) => setActiveCustomBatch(prod)}
-                  language={language}
-                />
-              </>
-            )}
+          {/* PROMINENT AI VOICE ASSISTANT ON HOMEPAGE */}
+          <VoiceAssistantWidget
+            cityId={cityId}
+            lang={lang}
+            onOpenFullAssistant={() => setIsVoicePrismOpen(true)}
+          />
 
-            {activeTab === 'provenance' && (
-              <CraftDnaInspector
-                selectedProductId={selectedProductId}
-                setSelectedProductId={setSelectedProductId}
-                onOpenPassport={(product) => setPassportProduct(product)}
-              />
-            )}
+          {/* Dedicated Persona Metrics */}
+          <PersonaWidgets
+            cityId={cityId}
+            activePersona={activePersona}
+            lang={lang}
+          />
 
-            {activeTab === 'calculator' && (
-              <FairPriceCalculator language={language} />
-            )}
-
-            {activeTab === 'materials' && (
-              <RawMaterialPool />
-            )}
-
-            {activeTab === 'clusters' && (
-              <ClusterMap />
-            )}
-
-            {activeTab === 'studio' && (
-              <KarigarStudio />
-            )}
-          </>
-        )}
-      </main>
-
-      {/* Footer */}
-      <Footer setActiveTab={setActiveTab} />
-
-      {/* Modal: Verify Authenticity Product Detail */}
-      {activeProductDetail && (
-        <ProductDetailModal
-          product={activeProductDetail}
-          onClose={() => setActiveProductDetail(null)}
-          onAddToCart={handleAddToCart}
-          onOpenCustomBatch={(prod) => setActiveCustomBatch(prod)}
-          language={language}
-        />
-      )}
-
-      {/* Modal: Custom Production Batch Booking */}
-      {activeCustomBatch && (
-        <CustomBatchModal
-          product={activeCustomBatch}
-          onClose={() => setActiveCustomBatch(null)}
-          language={language}
-        />
-      )}
-
-      {/* Modal: GI Digital Passport */}
-      {passportProduct && (
-        <GiPassportModal
-          product={passportProduct}
-          onClose={() => setPassportProduct(null)}
-        />
-      )}
-
-      {/* Drawer: Boutique Cart */}
-      <CartDrawer
-        isOpen={isCartOpen}
-        onClose={() => setIsCartOpen(false)}
-        cart={cart}
-        onRemoveFromCart={handleRemoveFromCart}
-        onClearCart={handleClearCart}
-      />
-
-      {/* Modal: Tag Scanner Dialog */}
-      {isScanModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs animate-fadeIn">
-          <div className="relative w-full max-w-md bg-[#FFFDF9] rounded-3xl p-6 border-2 border-[#0F382A] shadow-2xl space-y-5">
-            <button
-              onClick={() => setIsScanModalOpen(false)}
-              className="absolute top-4 right-4 text-[#736B65] hover:text-[#1F1C1B]"
-            >
-              <X className="w-5 h-5" />
-            </button>
-
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-[#0F382A] text-[#DFCDA7] flex items-center justify-center">
-                <QrCode className="w-5 h-5" />
-              </div>
-              <div>
-                <h3 className="font-serif text-lg font-bold text-[#1F1C1B]">
-                  Simulate NFC / QR Tag Scan
-                </h3>
-                <p className="text-xs text-[#736B65]">Enter the Tag ID sewn into the garment</p>
-              </div>
-            </div>
-
-            <form onSubmit={handleScanSubmit} className="space-y-3">
-              <div>
-                <label className="text-xs font-semibold text-[#5A534E] block mb-1">
-                  Tag Identifier:
-                </label>
-                <input
-                  type="text"
-                  value={tagInput}
-                  onChange={(e) => setTagInput(e.target.value)}
-                  placeholder="e.g. LKO-CHK-8841"
-                  autoFocus
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF7F2] border border-[#DBB146]/50 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-[#0F382A]"
-                />
-              </div>
-
-              <div className="space-y-1.5 pt-1">
-                <span className="text-[11px] font-medium text-[#736B65] block">Quick Select Active Tags:</span>
-                <div className="flex flex-wrap gap-1.5">
-                  {products.slice(0, 4).map((p) => (
-                    <button
-                      key={p.id}
-                      type="button"
-                      onClick={() => setTagInput(p.tagId)}
-                      className="px-2.5 py-1 rounded-lg text-xs font-mono bg-[#FAF7F2] border border-[#EADFCF] hover:border-[#0F382A] text-[#5A534E]"
-                    >
-                      #{p.tagId}
-                    </button>
-                  ))}
+          {/* Quick Hub Navigation Cards on Homepage */}
+          <section className="max-w-7xl mx-auto px-4 py-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+              <button
+                onClick={() => setActiveView('notice')}
+                className="p-4 rounded-2xl bg-white border border-amber-200 hover:border-amber-400 hover:bg-amber-50/40 text-left transition-all shadow-xs flex items-center gap-3.5"
+              >
+                <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
+                  <Radio className="w-5 h-5 animate-pulse" />
                 </div>
-              </div>
+                <div>
+                  <span className="text-xs font-black text-monsoon-900 block">
+                    {lang === 'hi' ? 'मौसम चेतावनी नोटिस बोर्ड' : 'Danger Notice Board'}
+                  </span>
+                  <span className="text-[11px] text-monsoon-500">
+                    {lang === 'hi' ? '५ रंग कोड व आधिकारिक निर्देश →' : '5 Color codes & rules →'}
+                  </span>
+                </div>
+              </button>
 
               <button
-                type="submit"
-                className="w-full min-h-[44px] py-3 rounded-xl bg-[#0F382A] hover:bg-[#18543F] text-white text-xs font-bold shadow-soft-glow transition-all flex items-center justify-center gap-2 mt-4"
+                onClick={() => setActiveView('safety')}
+                className="p-4 rounded-2xl bg-white border border-emerald-200 hover:border-emerald-400 hover:bg-emerald-50/40 text-left transition-all shadow-xs flex items-center gap-3.5"
               >
-                <span>Read Provenance Record</span>
-                <ArrowRight className="w-4 h-4 text-[#DFCDA7]" />
+                <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                  <ShieldCheck className="w-5 h-5" />
+                </div>
+                <div>
+                  <span className="text-xs font-black text-monsoon-900 block">
+                    {lang === 'hi' ? 'एकीकृत सुरक्षा हब' : 'Unified Safety Hub'}
+                  </span>
+                  <span className="text-[11px] text-monsoon-500">
+                    {lang === 'hi' ? 'दामिनी बिजली, मेघदूत फसल व रडार →' : 'Damini, Meghdoot & Radar →'}
+                  </span>
+                </div>
               </button>
-            </form>
-          </div>
-        </div>
+
+              <button
+                onClick={() => setActiveView('forecast')}
+                className="p-4 rounded-2xl bg-white border border-purple-200 hover:border-purple-400 hover:bg-purple-50/40 text-left transition-all shadow-xs flex items-center gap-3.5"
+              >
+                <div className="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center shrink-0">
+                  <Calendar className="w-5 h-5" />
+                </div>
+                <div>
+                  <span className="text-xs font-black text-monsoon-900 block">
+                    {lang === 'hi' ? '७-दिवसीय विस्तृत पूर्वानुमान' : 'Detailed 7-Day Forecast'}
+                  </span>
+                  <span className="text-[11px] text-monsoon-500">
+                    {lang === 'hi' ? 'घंटे-दर-घंटे बारिश संभावना →' : 'Hourly rain curve & temps →'}
+                  </span>
+                </div>
+              </button>
+            </div>
+          </section>
+
+          {/* Footer */}
+          <Footer
+            lang={lang}
+            onOpenCrowdsource={() => setIsCrowdsourceOpen(true)}
+            setActivePortal={(view) => setActiveView(view)}
+          />
+        </main>
       )}
+
+      {/* VIEW 2: Dedicated Weather Danger Notice Board */}
+      {activeView === 'notice' && (
+        <main className="max-w-4xl mx-auto px-4 py-6 animate-fadeIn">
+          <div className="mb-4">
+            <button
+              onClick={() => setActiveView('home')}
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-sky-700 hover:text-sky-900 bg-white px-3 py-1.5 rounded-xl border border-monsoon-200 shadow-xs transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span>{lang === 'hi' ? 'मुख्य पृष्ठ पर वापस' : 'Back to Weather Home'}</span>
+            </button>
+          </div>
+          <WeatherNoticeBoard
+            activeAlertLevel={activeAlertLevel}
+            lang={lang}
+          />
+        </main>
+      )}
+
+      {/* VIEW 3: Dedicated Unified Safety Hub (Damini + Meghdoot + Doppler Radar) */}
+      {activeView === 'safety' && (
+        <main className="animate-fadeIn pb-12">
+          <div className="max-w-7xl mx-auto px-4 pt-4">
+            <button
+              onClick={() => setActiveView('home')}
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-sky-700 hover:text-sky-900 bg-white px-3 py-1.5 rounded-xl border border-monsoon-200 shadow-xs transition-colors mb-2"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span>{lang === 'hi' ? 'मुख्य पृष्ठ पर वापस' : 'Back to Weather Home'}</span>
+            </button>
+          </div>
+          <SafetyHub
+            cityId={cityId}
+            lang={lang}
+          />
+        </main>
+      )}
+
+      {/* VIEW 4: Dedicated 7-Day and Hourly Forecast */}
+      {activeView === 'forecast' && (
+        <main className="animate-fadeIn pb-12">
+          <div className="max-w-7xl mx-auto px-4 pt-4">
+            <button
+              onClick={() => setActiveView('home')}
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-sky-700 hover:text-sky-900 bg-white px-3 py-1.5 rounded-xl border border-monsoon-200 shadow-xs transition-colors mb-2"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span>{lang === 'hi' ? 'मुख्य पृष्ठ पर वापस' : 'Back to Weather Home'}</span>
+            </button>
+          </div>
+          <HourlyAndWeeklyForecast
+            cityId={cityId}
+            lang={lang}
+          />
+        </main>
+      )}
+
+      {/* VIEW 5: MoES Command Center (ONLY for MoES role) */}
+      {activeView === 'moes' && userRole === 'moes' && (
+        <main className="animate-fadeIn">
+          <MoESDashboard 
+            lang={lang} 
+            activeAlertLevel={activeAlertLevel}
+            setActiveAlertLevel={setActiveAlertLevel}
+          />
+        </main>
+      )}
+
+      {/* THE 3-DOTS NAVIGATION DRAWER (Carries everything) */}
+      <NavigationMenuDrawer
+        isOpen={isMenuOpen}
+        onClose={() => setIsMenuOpen(false)}
+        activeView={activeView}
+        setActiveView={setActiveView}
+        userRole={userRole}
+        onLogout={handleLogout}
+        activeAlertLevel={activeAlertLevel}
+        lang={lang}
+        setLang={setLang}
+        fontScale={fontScale}
+        setFontScale={setFontScale}
+        highContrast={highContrast}
+        setHighContrast={setHighContrast}
+        onOpenCrowdsource={() => setIsCrowdsourceOpen(true)}
+        onOpenVoicePrism={() => setIsVoicePrismOpen(true)}
+      />
+
+      {/* Crowdsource Verification Dialog */}
+      <CrowdsourceModal
+        isOpen={isCrowdsourceOpen}
+        onClose={() => setIsCrowdsourceOpen(false)}
+        cityId={cityId}
+        lang={lang}
+      />
+
+      {/* MAUSAM PRISM AI MULTILINGUAL VOICE ASSISTANT MODAL */}
+      <MausamPrismModal
+        isOpen={isVoicePrismOpen}
+        onClose={() => setIsVoicePrismOpen(false)}
+        currentCityId={cityId}
+        activePersona={activePersona}
+        appLang={lang}
+      />
     </div>
   );
 }

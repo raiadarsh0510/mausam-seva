@@ -4,49 +4,96 @@
 
 @layer base {
   body {
-    background-color: #FAF7F2;
-    color: #2F2B28;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-  }
-
-  h1, h2, h3, h4, .font-serif {
-    font-family: 'Cormorant Garamond', Georgia, serif;
+    background-color: #F8FAFC;
+    color: #0F172A;
+    font-family: 'Inter', 'Plus Jakarta Sans', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
 }
 
-/* Custom scrollbar in light artisanal gold */
+/* 3-Stage Accessibility Font Scaling */
+.font-scale-standard {
+  font-size: 100%;
+}
+
+.font-scale-large {
+  font-size: 115%;
+}
+
+.font-scale-large h1 { font-size: 2.5rem; }
+.font-scale-large h2 { font-size: 1.85rem; }
+.font-scale-large p, .font-scale-large span, .font-scale-large button { font-size: 1.125rem; }
+
+.font-scale-xlarge {
+  font-size: 130%;
+}
+
+.font-scale-xlarge h1 { font-size: 3rem; }
+.font-scale-xlarge h2 { font-size: 2.25rem; }
+.font-scale-xlarge p, .font-scale-xlarge span, .font-scale-xlarge button { font-size: 1.25rem; }
+
+/* High-Contrast Accessibility Mode */
+.high-contrast {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+}
+
+.high-contrast .bg-white,
+.high-contrast .bg-monsoon-50,
+.high-contrast .bg-sky-50 {
+  background-color: #090D16 !important;
+  border-color: #FEF08A !important;
+  color: #FFFFFF !important;
+}
+
+.high-contrast p,
+.high-contrast span {
+  color: #F8FAFC !important;
+}
+
+.high-contrast button {
+  border-color: #FACC15 !important;
+}
+
+/* Pulse animation for radar & alert badges */
+@keyframes radar-pulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.animate-radar {
+  animation: radar-pulse 2s infinite ease-in-out;
+}
+
+/* Atmospheric weather card gradients */
+.weather-gradient-sunny {
+  background: linear-gradient(135deg, #0284C7 0%, #38BDF8 60%, #F59E0B 100%);
+}
+
+.weather-gradient-rainy {
+  background: linear-gradient(135deg, #1E293B 0%, #334155 50%, #0369A1 100%);
+}
+
+.weather-gradient-warning {
+  background: linear-gradient(135deg, #991B1B 0%, #DC2626 60%, #EA580C 100%);
+}
+
+/* Custom accessible scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #F4EEE2;
+  background: #F1F5F9;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #DBB146;
-  border-radius: 4px;
+  background: #94A3B8;
+  border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #C59A2C;
-}
-
-/* Subtle gold border glow */
-.gold-leaf-border {
-  border: 1px solid rgba(197, 154, 44, 0.25);
-  box-shadow: 0 4px 20px -2px rgba(197, 154, 44, 0.08);
-}
-
-.gold-leaf-border:hover {
-  border-color: rgba(197, 154, 44, 0.5);
-  box-shadow: 0 6px 25px -2px rgba(197, 154, 44, 0.16);
-}
-
-/* Subtle textile grain pattern */
-.textile-texture {
-  background-color: #FAF7F2;
-  background-image: radial-gradient(rgba(197, 154, 44, 0.08) 1px, transparent 0);
-  background-size: 24px 24px;
+  background: #64748B;
 }
