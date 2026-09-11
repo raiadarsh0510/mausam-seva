@@ -260,28 +260,28 @@ export function LoginPage({ onLogin, lang, setLang }) {
                 </div>
               </div>
             ) : (
-              /* MoES Official Login: Ultra Professional Executive Command Look */
-              <div className="bg-gradient-to-b from-monsoon-900 via-monsoon-950 to-black rounded-3xl p-6 sm:p-8 border-2 border-amber-500/60 shadow-2xl text-white flex flex-col justify-between h-full relative overflow-hidden">
+              /* MoES Official Login: White, Light Blue, Dark Blue & Purple Palette */
+              <div className="bg-gradient-to-b from-[#0C1A30] via-[#1E1B4B] to-[#070F2B] rounded-3xl p-6 sm:p-8 border-2 border-purple-500/60 shadow-2xl shadow-purple-950/50 text-white flex flex-col justify-between h-full relative overflow-hidden">
                 {/* Background decorative glow */}
-                <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div className="absolute top-0 right-0 w-48 h-48 bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
 
                 <div className="relative z-10">
-                  <div className="flex items-center justify-between mb-4 pb-3 border-b border-monsoon-800">
+                  <div className="flex items-center justify-between mb-4 pb-3 border-b border-purple-500/20">
                     <div className="flex items-center gap-2.5">
-                      <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-300 text-monsoon-950 flex items-center justify-center font-bold shadow-md">
-                        <Building2 className="w-5 h-5" />
+                      <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-600 via-indigo-500 to-sky-400 text-white flex items-center justify-center font-bold shadow-md shadow-purple-900/40">
+                        <Building2 className="w-5 h-5 text-white" />
                       </div>
                       <div>
                         <h3 className="text-base sm:text-lg font-black text-white tracking-tight flex items-center gap-2">
                           <span>MoES Executive Command</span>
-                          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                          <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
                         </h3>
-                        <span className="text-[11px] text-amber-300/80 font-mono">
+                        <span className="text-[11px] text-sky-300 font-mono">
                           National Meteorological Decision Support
                         </span>
                       </div>
                     </div>
-                    <span className="px-2.5 py-1 rounded text-[10px] font-mono font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30 uppercase">
+                    <span className="px-2.5 py-1 rounded text-[10px] font-mono font-bold bg-purple-500/25 text-purple-200 border border-purple-400/40 uppercase">
                       Classified / Restricted
                     </span>
                   </div>
@@ -295,7 +295,7 @@ export function LoginPage({ onLogin, lang, setLang }) {
                         type="email"
                         value={govEmail}
                         onChange={(e) => setGovEmail(e.target.value)}
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-monsoon-900 border border-monsoon-700 text-xs font-mono text-amber-200 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-monsoon-900 border border-monsoon-700 text-xs font-mono text-sky-200 focus:outline-none focus:border-purple-400 focus:ring-1 focus:ring-purple-400"
                       />
                     </div>
 
@@ -307,7 +307,7 @@ export function LoginPage({ onLogin, lang, setLang }) {
                         type="text"
                         value={employeeId}
                         onChange={(e) => setEmployeeId(e.target.value)}
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-monsoon-900 border border-monsoon-700 text-xs font-mono text-white focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-monsoon-900 border border-monsoon-700 text-xs font-mono text-white focus:outline-none focus:border-purple-400 focus:ring-1 focus:ring-purple-400"
                       />
                     </div>
 
@@ -319,7 +319,7 @@ export function LoginPage({ onLogin, lang, setLang }) {
                         type="password"
                         value={securityPin}
                         onChange={(e) => setSecurityPin(e.target.value)}
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-monsoon-900 border border-monsoon-700 text-xs font-mono text-white focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 tracking-widest"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-monsoon-900 border border-monsoon-700 text-xs font-mono text-white focus:outline-none focus:border-purple-400 focus:ring-1 focus:ring-purple-400 tracking-widest"
                       />
                     </div>
 

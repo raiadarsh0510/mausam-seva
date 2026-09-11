@@ -29,13 +29,13 @@ export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel }) {
   };
 
   return (
-    <div className="min-h-screen bg-monsoon-950 text-white pb-16 font-sans">
-      {/* Top MoES Authority Header */}
-      <div className="bg-monsoon-900 border-b border-monsoon-800 px-4 py-4">
+    <div className="min-h-screen bg-[#070F2B] text-white pb-16 font-sans">
+      {/* Top MoES Authority Header - White, Light Blue, Dark Blue & Purple Palette */}
+      <div className="bg-gradient-to-r from-[#0B192C] via-[#1E1B4B] to-[#2E1065] border-b border-purple-500/30 px-4 py-4 shadow-lg shadow-[#070F2B]/50">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-300 text-monsoon-950 flex items-center justify-center font-black">
-              <Building2 className="w-5 h-5" />
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 via-indigo-500 to-sky-400 text-white flex items-center justify-center font-black shadow-md shadow-purple-900/40">
+              <Building2 className="w-5 h-5 text-white" />
             </div>
             <div>
               <div className="flex items-center gap-2">
@@ -44,11 +44,11 @@ export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel }) {
                     ? 'पृथ्वी विज्ञान मंत्रालय (MoES) — राष्ट्रीय जलवायु एवं मांग विश्लेषण पोर्टल' 
                     : 'Ministry of Earth Sciences (MoES) — National Climate & Demand Telemetry'}
                 </h1>
-                <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-purple-500/25 text-purple-200 border border-purple-400/40">
                   GOVT ADMIN CONSOLE
                 </span>
               </div>
-              <p className="text-xs text-monsoon-400">
+              <p className="text-xs text-sky-200/90 font-medium">
                 {lang === 'hi' 
                   ? 'नागरिक टेलीमेट्री आधारित अंतर-मंत्रालयी उत्पादन एवं मांग पूर्वानुमान प्रणाली' 
                   : 'Citizen telemetry-driven inter-ministerial production & infrastructure load prediction'}
@@ -60,26 +60,26 @@ export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel }) {
             {/* Direct Navigation Button: THE DATA */}
             <button
               onClick={() => openDataPortal('data')}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-xs font-black transition-all shadow-sm"
+              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white border border-purple-400/50 text-xs font-black transition-all shadow-md shadow-purple-900/40"
               title="View actual citizen persona entries"
             >
-              <Database className="w-4 h-4 text-amber-400" />
+              <Database className="w-4 h-4 text-sky-300" />
               <span>{lang === 'hi' ? 'द डेटा (The Data — पर्सोना प्रविष्टियाँ)' : 'The Data (Persona Entries)'}</span>
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span className="w-2 h-2 rounded-full bg-cyan-300 animate-pulse"></span>
             </button>
 
             {/* Direct Navigation Button: Gap Analysis & Comparison */}
             <button
               onClick={() => openDataPortal('comparison')}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-600/30 hover:bg-sky-600/50 text-sky-200 border border-sky-500/40 text-xs font-bold transition-colors"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-500/20 hover:bg-sky-500/30 text-sky-200 border border-sky-400/40 text-xs font-bold transition-colors"
             >
               <Scale className="w-4 h-4 text-sky-300" />
               <span>{lang === 'hi' ? 'मॉडल तुलना व अंतर' : 'Gap Analysis & Comparison'}</span>
             </button>
 
-            <div className="flex items-center gap-2 text-xs font-mono bg-monsoon-800/80 px-3 py-1.5 rounded-lg border border-monsoon-700">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
-              <span className="text-emerald-400 font-bold">14,280 Nodes Live</span>
+            <div className="flex items-center gap-2 text-xs font-mono bg-[#0B1528] px-3 py-1.5 rounded-lg border border-purple-500/30">
+              <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping"></span>
+              <span className="text-cyan-300 font-bold">14,280 Nodes Live</span>
             </div>
           </div>
         </div>
@@ -87,18 +87,18 @@ export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel }) {
 
       <main className="max-w-7xl mx-auto px-4 py-6 space-y-6">
         {/* TOP MOES EXCLUSIVE FEATURE: 5-Color Danger Indicator Controller */}
-        <div className="bg-gradient-to-r from-monsoon-900 via-monsoon-900 to-amber-950/40 border-2 border-amber-500/40 rounded-3xl p-6 shadow-xl">
-          <div className="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-monsoon-800">
+        <div className="bg-gradient-to-r from-[#0C1A30] via-[#1E1B4B] to-[#172554] border-2 border-purple-500/40 rounded-3xl p-6 shadow-xl shadow-purple-950/40">
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-purple-500/20">
             <div>
               <div className="flex items-center gap-2">
-                <Palette className="w-5 h-5 text-amber-400" />
+                <Palette className="w-5 h-5 text-purple-400" />
                 <h2 className="text-base sm:text-lg font-black text-white tracking-tight">
                   {lang === 'hi' 
                     ? 'नागरिक पोर्टल हेतु ५-रंग मौसम चेतावनी नियंत्रक (5-Color Threat Broadcast)' 
                     : 'Citizen Homepage 5-Color Danger Threat Controller'}
                 </h2>
               </div>
-              <p className="text-xs text-monsoon-400 mt-0.5">
+              <p className="text-xs text-sky-200/80 mt-0.5 font-medium">
                 {lang === 'hi'
                   ? 'अधिकारी जिस रंग का चयन करेंगे, वह नागरिक होमपेज के शीर्ष कोने व नोटिस बोर्ड पर तुरंत लाइव प्रदर्शित होगा।'
                   : 'Selected threat level immediately updates the badge on the citizen homepage top corner and notice board in real time.'}
@@ -106,7 +106,7 @@ export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel }) {
             </div>
 
             <div className="flex items-center gap-2">
-              <span className="text-xs text-monsoon-400 font-mono">
+              <span className="text-xs text-sky-300 font-mono">
                 {lang === 'hi' ? 'वर्तमान लाइव स्तर:' : 'Currently Live:'}
               </span>
               <span 
@@ -130,8 +130,8 @@ export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel }) {
                   onClick={() => setActiveAlertLevel(lvl.id)}
                   className={`p-3.5 rounded-2xl border text-left transition-all relative overflow-hidden ${
                     isSelected
-                      ? 'bg-monsoon-800 border-white ring-2 ring-white/60 shadow-lg scale-102'
-                      : 'bg-monsoon-950/60 border-monsoon-800 hover:border-monsoon-700'
+                      ? 'bg-gradient-to-b from-purple-900/90 to-blue-950/90 border-white ring-2 ring-sky-400 shadow-lg shadow-purple-500/20 scale-102'
+                      : 'bg-[#070F2B]/80 border-blue-900/60 hover:border-purple-500/40'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-2">
@@ -149,7 +149,7 @@ export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel }) {
                   <span className="text-xs font-black text-white block mb-0.5">
                     {lang === 'hi' ? lvl.nameHi.split('—')[0] : lvl.code}
                   </span>
-                  <span className="text-[10px] text-monsoon-400 font-medium block leading-tight">
+                  <span className="text-[10px] text-sky-200 font-medium block leading-tight">
                     {lvl.severity}
                   </span>
                 </button>
@@ -160,8 +160,8 @@ export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel }) {
 
         {/* National Metric Telemetry Cards */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-          <div className="bg-monsoon-900/90 border border-monsoon-800 rounded-2xl p-4">
-            <span className="text-xs font-semibold text-monsoon-400 block mb-1">
+          <div className="bg-[#0C1A30] border border-blue-900/60 rounded-2xl p-4">
+            <span className="text-xs font-semibold text-sky-200 block mb-1">
               {lang === 'hi' ? 'दैनिक नागरिक टेलीमेट्री प्रश्न' : 'Daily Citizen Telemetry Queries'}
             </span>
             <span className="text-2xl sm:text-3xl font-black text-white font-mono">
@@ -172,32 +172,32 @@ export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel }) {
             </span>
           </div>
 
-          <div className="bg-monsoon-900/90 border border-monsoon-800 rounded-2xl p-4">
-            <span className="text-xs font-semibold text-monsoon-400 block mb-1">
+          <div className="bg-[#0C1A30] border border-blue-900/60 rounded-2xl p-4">
+            <span className="text-xs font-semibold text-sky-200 block mb-1">
               {lang === 'hi' ? 'सक्रिय चेतावनी जिले (रेड/ऑरेंज)' : 'Active Alert Districts'}
             </span>
-            <span className="text-2xl sm:text-3xl font-black text-amber-400 font-mono">
+            <span className="text-2xl sm:text-3xl font-black text-purple-400 font-mono">
               {nationalSummary.activeAlertDistricts}
             </span>
-            <span className="text-[11px] text-amber-300 block font-semibold mt-1">
+            <span className="text-[11px] text-purple-300 block font-semibold mt-1">
               Monsoon & Lightning alerts
             </span>
           </div>
 
-          <div className="bg-monsoon-900/90 border border-monsoon-800 rounded-2xl p-4">
-            <span className="text-xs font-semibold text-monsoon-400 block mb-1">
+          <div className="bg-[#0C1A30] border border-blue-900/60 rounded-2xl p-4">
+            <span className="text-xs font-semibold text-sky-200 block mb-1">
               {lang === 'hi' ? 'रडार-नागरिक मैच सटीकता' : 'Radar Citizen-Match Accuracy'}
             </span>
             <span className="text-2xl sm:text-3xl font-black text-emerald-400 font-mono">
               {nationalSummary.radarMatchAccuracy}%
             </span>
-            <span className="text-[11px] text-monsoon-400 block font-semibold mt-1">
+            <span className="text-[11px] text-sky-200 block font-semibold mt-1">
               Calibrated via 4,820 live reports
             </span>
           </div>
 
-          <div className="bg-monsoon-900/90 border border-monsoon-800 rounded-2xl p-4">
-            <span className="text-xs font-semibold text-monsoon-400 block mb-1">
+          <div className="bg-[#0C1A30] border border-blue-900/60 rounded-2xl p-4">
+            <span className="text-xs font-semibold text-sky-200 block mb-1">
               {lang === 'hi' ? 'मॉडल विश्वसनीयता स्कोर' : 'Predictive Confidence Score'}
             </span>
             <span className="text-2xl sm:text-3xl font-black text-sky-400 font-mono">
@@ -210,18 +210,18 @@ export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel }) {
         </div>
 
         {/* Section 1: Persona Telemetry Demand Breakdown + Quick Link to 'The Data' */}
-        <div className="bg-monsoon-900/80 border border-monsoon-800 rounded-3xl p-6">
+        <div className="bg-[#0C1A30] border border-blue-900/60 rounded-3xl p-6">
           <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
             <div>
               <h2 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
-                <Users className="w-5 h-5 text-amber-400" />
+                <Users className="w-5 h-5 text-purple-400" />
                 <span>
                   {lang === 'hi' 
                     ? 'नागरिक भूमिका आधारित टेलीमेट्री एवं मांग रुझान' 
                     : 'Citizen Persona Telemetry & Demand Streams'}
                 </span>
               </h2>
-              <p className="text-xs text-monsoon-400">
+              <p className="text-xs text-sky-200">
                 {lang === 'hi'
                   ? 'नागरिकों द्वारा खोजी जा रही मौसम जानकारी सीधे विभिन्न क्षेत्रों में आगामी मांग का संकेत देती है'
                   : 'Anonymized citizen interaction data directly signals impending macro-economic & infrastructure demand'}
@@ -231,12 +231,12 @@ export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel }) {
             <div className="flex items-center gap-2">
               <button
                 onClick={() => openDataPortal('data')}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-xs font-bold transition-all"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-purple-300 border border-purple-400/40 text-xs font-bold transition-all"
               >
                 <Eye className="w-3.5 h-3.5" />
                 <span>{lang === 'hi' ? 'वास्तविक पर्सोना प्रविष्टियाँ देखें (The Data)' : 'View Persona Entries (The Data)'}</span>
               </button>
-              <span className="text-xs font-mono text-monsoon-400 bg-monsoon-800 px-3 py-1 rounded-full border border-monsoon-700 hidden sm:inline-block">
+              <span className="text-xs font-mono text-sky-200 bg-[#132247] px-3 py-1 rounded-full border border-purple-500/30 hidden sm:inline-block">
                 Live Feed • 10s
               </span>
             </div>
@@ -244,15 +244,15 @@ export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel }) {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             {personaTraffic.slice(0, 4).map((pt, i) => (
-              <div key={i} className="bg-monsoon-950/70 border border-monsoon-800 rounded-xl p-3.5">
-                <div className="flex items-center justify-between text-xs font-bold text-monsoon-300 mb-1">
+              <div key={i} className="bg-[#070F2B] border border-blue-900/60 rounded-xl p-3.5">
+                <div className="flex items-center justify-between text-xs font-bold text-sky-100 mb-1">
                   <span>{pt.persona}</span>
-                  <span className="font-mono text-amber-400">{pt.share}%</span>
+                  <span className="font-mono text-purple-400">{pt.share}%</span>
                 </div>
-                <div className="w-full h-1.5 rounded-full bg-monsoon-800 overflow-hidden mb-2">
+                <div className="w-full h-1.5 rounded-full bg-[#132247] overflow-hidden mb-2">
                   <div className="h-full bg-amber-400 rounded-full" style={{ width: `${pt.share * 2}%` }}></div>
                 </div>
-                <div className="flex items-center justify-between text-[11px] text-monsoon-400">
+                <div className="flex items-center justify-between text-[11px] text-sky-200">
                   <span>{pt.queriesToday} queries</span>
                   <span className="text-emerald-400 font-semibold">{pt.growth}</span>
                 </div>
@@ -262,8 +262,8 @@ export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel }) {
         </div>
 
         {/* Section 2: Cross-Ministry Production & Load Prediction Engines */}
-        <div className="bg-monsoon-900/80 border border-monsoon-800 rounded-3xl p-6">
-          <div className="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-monsoon-800">
+        <div className="bg-[#0C1A30] border border-blue-900/60 rounded-3xl p-6">
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-blue-900/50">
             <div>
               <div className="flex items-center gap-2">
                 <Database className="w-5 h-5 text-sky-400" />
@@ -273,7 +273,7 @@ export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel }) {
                     : 'Inter-Ministerial Production & Grid Prediction Engine'}
                 </h2>
               </div>
-              <p className="text-xs text-monsoon-400">
+              <p className="text-xs text-sky-200">
                 {lang === 'hi'
                   ? 'मौसम डेटा को कृषि मंत्रालय, ऊर्जा मंत्रालय और स्वास्थ्य मंत्रालय के साथ समन्वयित करता है'
                   : 'Bridges meteorological forecasting with Ministry of Agriculture, Ministry of Power & Ministry of Health'}
@@ -281,13 +281,13 @@ export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel }) {
             </div>
 
             {/* Sub-engine selector tabs */}
-            <div className="flex items-center gap-1.5 bg-monsoon-950 p-1 rounded-xl border border-monsoon-800">
+            <div className="flex items-center gap-1.5 bg-monsoon-950 p-1 rounded-xl border border-blue-900/50">
               <button
                 onClick={() => setActiveModelTab('agriculture')}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
                   activeModelTab === 'agriculture'
                     ? 'bg-emerald-600 text-white shadow-xs'
-                    : 'text-monsoon-400 hover:text-white'
+                    : 'text-sky-200 hover:text-white'
                 }`}
               >
                 <Tractor className="w-3.5 h-3.5" />
@@ -299,7 +299,7 @@ export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel }) {
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
                   activeModelTab === 'power'
                     ? 'bg-amber-600 text-white shadow-xs'
-                    : 'text-monsoon-400 hover:text-white'
+                    : 'text-sky-200 hover:text-white'
                 }`}
               >
                 <Zap className="w-3.5 h-3.5" />
@@ -311,7 +311,7 @@ export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel }) {
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
                   activeModelTab === 'health'
                     ? 'bg-rose-600 text-white shadow-xs'
-                    : 'text-monsoon-400 hover:text-white'
+                    : 'text-sky-200 hover:text-white'
                 }`}
               >
                 <HeartPulse className="w-3.5 h-3.5" />
@@ -332,7 +332,7 @@ export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel }) {
 
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
                 {predictiveModels.agriculture.map((ag, i) => (
-                  <div key={i} className="bg-monsoon-950 border border-monsoon-800 rounded-2xl p-5 flex flex-col justify-between">
+                  <div key={i} className="bg-[#070F2B] border border-blue-900/60 rounded-2xl p-5 flex flex-col justify-between">
                     <div>
                       <div className="flex items-center justify-between gap-2 mb-2">
                         <span className="text-xs font-bold text-emerald-400">{ag.state}</span>
@@ -340,20 +340,20 @@ export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel }) {
                           ag.riskLevel.includes('High') 
                             ? 'bg-rose-500/20 text-rose-300 border border-rose-500/30' 
                             : ag.riskLevel.includes('Medium')
-                            ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
+                            ? 'bg-amber-500/20 text-purple-300 border border-purple-400/30'
                             : 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
                         }`}>
                           {ag.riskLevel}
                         </span>
                       </div>
                       <h3 className="text-base font-extrabold text-white mb-1">{ag.crop}</h3>
-                      <div className="text-xl font-black text-amber-300 font-mono mb-3">
+                      <div className="text-xl font-black text-purple-300 font-mono mb-3">
                         {ag.projectedYieldChange}
                       </div>
 
-                      <div className="space-y-2 text-xs border-t border-monsoon-800/80 pt-3">
-                        <p className="text-monsoon-400">
-                          <strong className="text-monsoon-300">Citizen Telemetry Driver:</strong> {ag.telemetryDriver}
+                      <div className="space-y-2 text-xs border-t border-blue-900/50/80 pt-3">
+                        <p className="text-sky-200">
+                          <strong className="text-sky-100">Citizen Telemetry Driver:</strong> {ag.telemetryDriver}
                         </p>
                         <p className="text-emerald-300 font-medium bg-emerald-950/30 p-2 rounded-lg border border-emerald-800/30">
                           <strong>FCI Action:</strong> {ag.fciProcurementImpact}
@@ -373,15 +373,15 @@ export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel }) {
                 <span>
                   <strong>Predictive Objective:</strong> Forecast peak MW electricity load based on Cooling Degree Days (CDD) and heatwave query density to prevent grid tripping.
                 </span>
-                <span className="font-mono text-amber-400">Target: Central Electricity Authority (CEA) & DISCOMs</span>
+                <span className="font-mono text-purple-400">Target: Central Electricity Authority (CEA) & DISCOMs</span>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {predictiveModels.powerGrid.map((pg, i) => (
-                  <div key={i} className="bg-monsoon-950 border border-monsoon-800 rounded-2xl p-5">
+                  <div key={i} className="bg-[#070F2B] border border-blue-900/60 rounded-2xl p-5">
                     <div className="flex items-center justify-between gap-2 mb-2">
-                      <span className="text-xs font-bold text-amber-400">{pg.region}</span>
-                      <span className="text-xs font-mono bg-monsoon-800 px-2 py-0.5 rounded text-monsoon-300">
+                      <span className="text-xs font-bold text-purple-400">{pg.region}</span>
+                      <span className="text-xs font-mono bg-[#132247] px-2 py-0.5 rounded text-sky-100">
                         CDD: {pg.coolingDegreeDays}
                       </span>
                     </div>
@@ -391,8 +391,8 @@ export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel }) {
                         {pg.projectedSurge}
                       </span>
                     </div>
-                    <p className="text-xs text-monsoon-400 mb-3">{pg.triggerFactor}</p>
-                    <div className="bg-amber-950/30 border border-amber-800/30 p-2.5 rounded-xl text-xs text-amber-300">
+                    <p className="text-xs text-sky-200 mb-3">{pg.triggerFactor}</p>
+                    <div className="bg-amber-950/30 border border-amber-800/30 p-2.5 rounded-xl text-xs text-purple-300">
                       <strong>Grid Dispatcher Action:</strong> {pg.actionRequired}
                     </div>
                   </div>
@@ -413,7 +413,7 @@ export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel }) {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {predictiveModels.publicHealth.map((ph, i) => (
-                  <div key={i} className="bg-monsoon-950 border border-monsoon-800 rounded-2xl p-5">
+                  <div key={i} className="bg-[#070F2B] border border-blue-900/60 rounded-2xl p-5">
                     <div className="flex items-center justify-between gap-2 mb-2">
                       <span className="text-xs font-bold text-rose-400">{ph.cluster}</span>
                       <span className="text-xs font-mono font-bold text-rose-300 bg-rose-500/20 px-2 py-0.5 rounded border border-rose-500/30">
@@ -421,8 +421,8 @@ export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel }) {
                       </span>
                     </div>
                     <h3 className="text-sm font-bold text-white mb-2">{ph.forecastCondition}</h3>
-                    <p className="text-xs text-monsoon-400 mb-2">
-                      <strong className="text-monsoon-300">At-Risk Group:</strong> {ph.vulnerablePopulation}
+                    <p className="text-xs text-sky-200 mb-2">
+                      <strong className="text-sky-100">At-Risk Group:</strong> {ph.vulnerablePopulation}
                     </p>
                     <div className="bg-rose-950/30 border border-rose-800/30 p-2.5 rounded-xl text-xs text-rose-200">
                       <strong>Hospital Protocol:</strong> {ph.mohwAction}
@@ -435,7 +435,7 @@ export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel }) {
         </div>
 
         {/* Section 3: Emergency Inter-Agency Common Alert Protocol (CAP) Dispatcher */}
-        <div className="bg-gradient-to-r from-monsoon-900 to-rose-950/50 border border-monsoon-800 rounded-3xl p-6">
+        <div className="bg-gradient-to-r from-monsoon-900 to-rose-950/50 border border-blue-900/50 rounded-3xl p-6">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div>
               <div className="flex items-center gap-2">
@@ -446,7 +446,7 @@ export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel }) {
                     : 'Emergency Common Alerting Protocol (CAP) Broadcast'}
                 </h3>
               </div>
-              <p className="text-xs text-monsoon-400 mt-1 max-w-xl">
+              <p className="text-xs text-sky-200 mt-1 max-w-xl">
                 Simulate broadcasting verified weather red/orange alerts to State Disaster Management Authorities (SDMAs), District Collectors, and mobile citizen push channels.
               </p>
             </div>
@@ -455,7 +455,7 @@ export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel }) {
               <select
                 value={selectedDistrict}
                 onChange={(e) => setSelectedDistrict(e.target.value)}
-                className="bg-monsoon-950 border border-monsoon-700 text-xs text-white rounded-xl px-3 py-2 focus:outline-none cursor-pointer"
+                className="bg-monsoon-950 border border-purple-500/30 text-xs text-white rounded-xl px-3 py-2 focus:outline-none cursor-pointer"
               >
                 <option value="Vidarbha, Maharashtra">Vidarbha (High Moisture Pest Alert)</option>
                 <option value="Mumbai Suburb, MH">Mumbai Coastal (High Swell 4.1m)</option>
@@ -491,45 +491,45 @@ export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel }) {
       {/* COMPREHENSIVE GAP ANALYSIS & ARCHITECTURAL COMPARISON + THE DATA MODAL */}
       {showComparisonModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
-          <div className="bg-monsoon-900 border border-monsoon-700 rounded-3xl p-5 sm:p-8 max-w-5xl w-full max-h-[92vh] overflow-y-auto shadow-2xl space-y-6">
+          <div className="bg-monsoon-900 border border-purple-500/30 rounded-3xl p-5 sm:p-8 max-w-5xl w-full max-h-[92vh] overflow-y-auto shadow-2xl space-y-6">
             {/* Modal Title Bar */}
-            <div className="flex items-center justify-between gap-3 pb-4 border-b border-monsoon-800">
+            <div className="flex items-center justify-between gap-3 pb-4 border-b border-blue-900/50">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-2xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400">
+                <div className="w-10 h-10 rounded-2xl bg-amber-500/20 border border-purple-400/30 flex items-center justify-center text-purple-400">
                   {comparisonActiveTab === 'data' ? <Database className="w-5 h-5" /> : <Scale className="w-5 h-5" />}
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-black text-white tracking-tight">
                     Comprehensive Gap Analysis & Architectural Comparison
                   </h3>
-                  <p className="text-xs text-monsoon-400">
+                  <p className="text-xs text-sky-200">
                     Ministry of Earth Sciences (MoES) — Architectural Benchmarks & Ingested Persona Telemetry
                   </p>
                 </div>
               </div>
               <button
                 onClick={() => setShowComparisonModal(false)}
-                className="text-monsoon-400 hover:text-white text-xs font-mono px-3 py-1.5 rounded-xl bg-monsoon-800 hover:bg-monsoon-700 border border-monsoon-700 transition-colors"
+                className="text-sky-200 hover:text-white text-xs font-mono px-3 py-1.5 rounded-xl bg-[#132247] hover:bg-monsoon-700 border border-purple-500/30 transition-colors"
               >
                 Close [ESC]
               </button>
             </div>
 
             {/* REQUIRED NAVIGATION: "The Data" vs "Gap Analysis & Architecture" */}
-            <div className="flex items-center gap-2 bg-monsoon-950 p-1.5 rounded-2xl border border-monsoon-800">
+            <div className="flex items-center gap-2 bg-monsoon-950 p-1.5 rounded-2xl border border-blue-900/50">
               {/* NAVIGATION TAB 1: THE DATA */}
               <button
                 onClick={() => setComparisonActiveTab('data')}
                 className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all ${
                   comparisonActiveTab === 'data'
-                    ? 'bg-amber-500 text-monsoon-950 shadow-lg font-black'
-                    : 'text-monsoon-400 hover:text-white'
+                    ? 'bg-gradient-to-r from-purple-600 to-sky-600 text-white shadow-lg font-black'
+                    : 'text-sky-200 hover:text-white'
                 }`}
               >
                 <Database className="w-4 h-4" />
                 <span>{lang === 'hi' ? 'द डेटा (The Data — वास्तविक पर्सोना प्रविष्टियाँ)' : 'The Data (Actual Persona Entries)'}</span>
                 <span className={`text-[10px] font-mono px-2 py-0.5 rounded ${
-                  comparisonActiveTab === 'data' ? 'bg-monsoon-900 text-amber-300 font-bold' : 'bg-monsoon-800 text-monsoon-400'
+                  comparisonActiveTab === 'data' ? 'bg-monsoon-900 text-purple-300 font-bold' : 'bg-[#132247] text-sky-200'
                 }`}>
                   LIVE TELEMETRY
                 </span>
@@ -541,7 +541,7 @@ export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel }) {
                 className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all ${
                   comparisonActiveTab === 'comparison'
                     ? 'bg-sky-600 text-white shadow-lg font-black'
-                    : 'text-monsoon-400 hover:text-white'
+                    : 'text-sky-200 hover:text-white'
                 }`}
               >
                 <Scale className="w-4 h-4" />
@@ -567,9 +567,9 @@ export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel }) {
                 </div>
 
                 {/* 3-Way Comparative Benchmark Table */}
-                <div className="overflow-x-auto rounded-2xl border border-monsoon-800">
+                <div className="overflow-x-auto rounded-2xl border border-blue-900/50">
                   <table className="w-full text-left text-xs">
-                    <thead className="bg-monsoon-950 text-monsoon-400 uppercase font-semibold text-[10px] tracking-wider">
+                    <thead className="bg-monsoon-950 text-sky-200 uppercase font-semibold text-[10px] tracking-wider">
                       <tr>
                         <th className="p-3">Capability / Dimension</th>
                         <th className="p-3">Current IMD Mausam</th>
@@ -586,7 +586,7 @@ export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel }) {
                       </tr>
                       <tr>
                         <td className="p-3 font-bold text-white">Consolidated Safety (Damini + Meghdoot)</td>
-                        <td className="p-3 text-amber-400">⚠️ Fragmented across 3 apps</td>
+                        <td className="p-3 text-purple-400">⚠️ Fragmented across 3 apps</td>
                         <td className="p-3 text-rose-400">❌ No Indian crop bulletins</td>
                         <td className="p-3 text-emerald-400 font-bold bg-emerald-950/20">✅ Unified in single light portal</td>
                       </tr>
@@ -605,18 +605,18 @@ export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel }) {
                       <tr>
                         <td className="p-3 font-bold text-white">Vernacular Speech Assistant</td>
                         <td className="p-3 text-rose-400">❌ Text only</td>
-                        <td className="p-3 text-amber-400">⚠️ English / Basic</td>
+                        <td className="p-3 text-purple-400">⚠️ English / Basic</td>
                         <td className="p-3 text-emerald-400 font-bold bg-emerald-950/20">✅ Native Hindi & Regional Speech Synthesis</td>
                       </tr>
                       <tr>
                         <td className="p-3 font-bold text-white">Accessibility for Ages 10–80+</td>
                         <td className="p-3 text-rose-400">❌ Small fixed fonts</td>
-                        <td className="p-3 text-amber-400">⚠️ OS-dependent</td>
+                        <td className="p-3 text-purple-400">⚠️ OS-dependent</td>
                         <td className="p-3 text-emerald-400 font-bold bg-emerald-950/20">✅ 3-Stage Font Scaling + High Contrast</td>
                       </tr>
                       <tr>
                         <td className="p-3 font-bold text-white">5-Color Threat Broadcast System</td>
-                        <td className="p-3 text-amber-400">⚠️ 4-colors only (Green/Yellow/Orange/Red)</td>
+                        <td className="p-3 text-purple-400">⚠️ 4-colors only (Green/Yellow/Orange/Red)</td>
                         <td className="p-3 text-rose-400">❌ Inconsistent generic banners</td>
                         <td className="p-3 text-emerald-400 font-bold bg-emerald-950/20">✅ 5 Tiers (+ Purple Worst Mausam Catastrophe)</td>
                       </tr>
@@ -626,32 +626,32 @@ export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel }) {
 
                 {/* 4 Architectural Pillars Callout */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
-                  <div className="bg-monsoon-950 border border-monsoon-800 rounded-2xl p-4">
-                    <h5 className="font-bold text-amber-400 mb-1 flex items-center gap-1.5">
+                  <div className="bg-[#070F2B] border border-blue-900/60 rounded-2xl p-4">
+                    <h5 className="font-bold text-purple-400 mb-1 flex items-center gap-1.5">
                       <Zap className="w-4 h-4" />
                       <span>1. Supply Chain & Power Coupling</span>
                     </h5>
-                    <p className="text-monsoon-400 text-[11px] leading-relaxed">
+                    <p className="text-sky-200 text-[11px] leading-relaxed">
                       Citizen queries for AC cooling degree days and irrigation schedules are translated into forward MW dispatch schedules for Regional Load Despatch Centres (RLDCs) and FCI procurement buffers.
                     </p>
                   </div>
 
-                  <div className="bg-monsoon-950 border border-monsoon-800 rounded-2xl p-4">
+                  <div className="bg-[#070F2B] border border-blue-900/60 rounded-2xl p-4">
                     <h5 className="font-bold text-emerald-400 mb-1 flex items-center gap-1.5">
                       <ShieldCheck className="w-4 h-4" />
                       <span>2. DPDP Act 2023 Compliance</span>
                     </h5>
-                    <p className="text-monsoon-400 text-[11px] leading-relaxed">
+                    <p className="text-sky-200 text-[11px] leading-relaxed">
                       All citizen persona queries are hashed to 500-meter spatial centroids with zero personally identifiable information (zero PII storage), meeting highest national data governance standards.
                     </p>
                   </div>
                 </div>
 
                 {/* Switch to Data button */}
-                <div className="p-4 bg-monsoon-950 border border-monsoon-800 rounded-2xl flex items-center justify-between">
+                <div className="p-4 bg-[#070F2B] border border-blue-900/60 rounded-2xl flex items-center justify-between">
                   <div>
                     <h5 className="font-bold text-white">Want to see the actual ingested persona telemetry?</h5>
-                    <p className="text-monsoon-400 text-[11px]">Inspect real-time citizen queries, sensor readings, and ministerial triggers.</p>
+                    <p className="text-sky-200 text-[11px]">Inspect real-time citizen queries, sensor readings, and ministerial triggers.</p>
                   </div>
                   <button
                     onClick={() => setComparisonActiveTab('data')}

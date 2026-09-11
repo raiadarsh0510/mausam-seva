@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { 
   MapPin, Navigation, Volume2, VolumeX, CloudRain, Sun, CloudSun, 
   Wind, Droplets, Zap, ShieldAlert, Sparkles, MessageCircleCheck, ArrowUpRight,
-  Radio, AlertTriangle
+  Radio, AlertTriangle, Landmark
 } from 'lucide-react';
 import { speechService } from '../services/speechService';
 import { CITIES_DATA, PERSONAS, WEATHER_ALERT_LEVELS } from '../data/mockWeatherData';
+import { REGIONAL_HERITAGE_DATA } from '../data/regionalHeritageData';
 
 export function CurrentWeatherHero({
   cityId,
@@ -62,10 +63,14 @@ export function CurrentWeatherHero({
               onChange={(e) => setCityId(e.target.value)}
               className="bg-transparent font-bold text-sm text-monsoon-900 focus:outline-none cursor-pointer"
             >
-              <option value="delhi">{lang === 'hi' ? 'नई दिल्ली (उत्तर भारत)' : 'New Delhi (Northern Urban)'}</option>
-              <option value="mumbai">{lang === 'hi' ? 'मुंबई (तटीय व भारी बारिश)' : 'Mumbai (Coastal Monsoon)'}</option>
-              <option value="lucknow">{lang === 'hi' ? 'लखनऊ (मध्य मैदानी / कृषि)' : 'Lucknow (Gangetic Agro)'}</option>
-              <option value="shimla">{lang === 'hi' ? 'शिमला (पहाड़ी / शीत लहर)' : 'Shimla (Himalayan / Cold)'}</option>
+              <option value="delhi">{lang === 'hi' ? '🏛️ नई दिल्ली (लाल किला / उत्तर भारत)' : '🏛️ New Delhi (Red Fort / Northern Plains)'}</option>
+              <option value="mumbai">{lang === 'hi' ? '🌊 मुंबई (गेटवे ऑफ इंडिया / कोंकण)' : '🌊 Mumbai (Gateway of India / Konkan)'}</option>
+              <option value="lucknow">{lang === 'hi' ? '🕌 लखनऊ (रूमी दरवाज़ा / अवध)' : '🕌 Lucknow (Rumi Darwaza / Awadh)'}</option>
+              <option value="shimla">{lang === 'hi' ? '🏔️ शिमला (क्राइस्ट चर्च / हिमालय)' : '🏔️ Shimla (Christ Church / Himalayas)'}</option>
+              <option value="kolkata">{lang === 'hi' ? '🌉 कोलकाता (हावड़ा ब्रिज / डेल्टा)' : '🌉 Kolkata (Howrah Bridge / Bengal Delta)'}</option>
+              <option value="bengaluru">{lang === 'hi' ? '🏛️ बेंगलुरु (विधान सौध / दक्कन)' : '🏛️ Bengaluru (Vidhana Soudha / Deccan)'}</option>
+              <option value="jaipur">{lang === 'hi' ? '🏰 जयपुर (हवा महल / थार)' : '🏰 Jaipur (Hawa Mahal / Thar Desert)'}</option>
+              <option value="chennai">{lang === 'hi' ? '🛕 चेन्नई (तटीय मंदिर / कोरोमंडल)' : '🛕 Chennai (Shore Temple / Coromandel)'}</option>
             </select>
           </div>
 
@@ -141,6 +146,12 @@ export function CurrentWeatherHero({
                 <Sparkles className="w-3 h-3 text-solar-300" />
                 {lang === 'hi' ? 'आईएमडी प्रमाणित' : 'IMD Verified Feed'}
               </span>
+              {REGIONAL_HERITAGE_DATA[cityId] && (
+                <span className="px-2.5 py-1 rounded-full bg-amber-400/20 text-amber-200 text-xs font-bold border border-amber-400/30 flex items-center gap-1">
+                  <Landmark className="w-3 h-3 text-amber-300" />
+                  {lang === 'hi' ? REGIONAL_HERITAGE_DATA[cityId].monumentNameHi : REGIONAL_HERITAGE_DATA[cityId].monumentName}
+                </span>
+              )}
             </div>
 
             <div className="flex items-baseline gap-4 sm:gap-6 my-2">

@@ -13,6 +13,8 @@ import { CrowdsourceModal } from './components/CrowdsourceModal';
 import { MausamPrismModal } from './components/voice/MausamPrismModal';
 import { Footer } from './components/Footer';
 import { MoESDashboard } from './components/moes/MoESDashboard';
+import { RegionalHeritageWatermark } from './components/RegionalHeritageWatermark';
+import { RegionalHeritageCard } from './components/RegionalHeritageCard';
 import { ArrowLeft, Radio, ShieldCheck, Calendar, Sparkles } from 'lucide-react';
 
 export default function App() {
@@ -91,10 +93,13 @@ export default function App() {
         lang={lang}
       />
 
+      {/* Subtle Regional Historical Monument & Cultural Motif Background Watermark */}
+      {activeView !== 'moes' && <RegionalHeritageWatermark cityId={cityId} />}
+
       {/* Main Modular View Router */}
       {/* VIEW 1: Clean, Focused Homepage */}
       {activeView === 'home' && (
-        <main className="animate-fadeIn pb-12">
+        <main className="animate-fadeIn pb-12 relative z-10">
           {/* Persona Selection Bar (Ages 10 to 80+) */}
           <PersonaBar
             activePersona={activePersona}
@@ -111,6 +116,12 @@ export default function App() {
             onOpenNotice={() => setActiveView('notice')}
             lang={lang}
             onOpenCrowdsource={() => setIsCrowdsourceOpen(true)}
+          />
+
+          {/* REGIONAL HISTORICAL & CULTURAL WEATHER PERSONALIZATION */}
+          <RegionalHeritageCard
+            cityId={cityId}
+            lang={lang}
           />
 
           {/* PROMINENT AI VOICE ASSISTANT ON HOMEPAGE */}

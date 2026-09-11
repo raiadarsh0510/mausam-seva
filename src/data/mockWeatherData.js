@@ -464,8 +464,392 @@ export const CITIES_DATA = {
       { time: '06 PM', temp: 17, pop: 50, icon: 'cloud-fog' },
       { time: '08 PM', temp: 15, pop: 30, icon: 'cloud' },
       { time: '10 PM', temp: 13, pop: 20, icon: 'moon' }
+    ]  },
+  'kolkata': {
+    id: 'kolkata',
+    name: 'Kolkata',
+    nameHi: 'कोलकाता',
+    state: 'West Bengal',
+    stateHi: 'पश्चिम बंगाल',
+    temp: 32,
+    feelsLike: 39,
+    condition: 'Tropical Humid & Breezy',
+    conditionHi: 'उष्णकटिबंधीय उमस व तेज हवा',
+    iconType: 'cloud-rain',
+    tempMin: 26,
+    tempMax: 34,
+    humidity: 82,
+    rainfallChance: 65,
+    windSpeed: 18,
+    windDirection: 'S',
+    pressure: 1004,
+    visibility: 3.5,
+    uvIndex: 6,
+    soilMoisture: 74,
+    isCoastal: true,
+    tide: {
+      highTide: '01:15 PM (3.85 meters - Hooghly Bore)',
+      highTideHi: 'दोपहर 01:15 बजे (3.85 मीटर - हुगली ज्वार)',
+      lowTide: '07:40 PM (0.92 meters)',
+      lowTideHi: 'शाम 07:40 बजे (0.92 मीटर)',
+      marineWarning: 'Riverine craft and ferry services to maintain cautious navigation during tidal bore',
+      marineWarningHi: 'हुगली में ज्वार के समय नौका व स्टीमर सेवाओं को सावधानी बरतने के निर्देश'
+    },
+    aqi: {
+      value: 88,
+      status: 'Satisfactory',
+      statusHi: 'संतोषजनक',
+      color: '#16A34A',
+      pm25: 32,
+      pm10: 75
+    },
+    daminiLightning: {
+      alertActive: true,
+      distanceKm: 22,
+      strikesCount: 8,
+      statusText: 'Kalbaishakhi squall line building 22 km North-West over Hooghly / Burdwan',
+      statusTextHi: 'हुगली/बर्धमान के ऊपर २२ किमी उत्तर-पश्चिम में कालबैशाखी बादलों का जमाव'
+    },
+    meghdootAgro: {
+      zone: 'Gangetic Alluvial & Deltaic Zone',
+      zoneHi: 'गंगा डेल्टाई एवं जलोढ़ कृषि क्षेत्र',
+      advisoryDate: '10 September 2026',
+      bulletin: 'Aman paddy transplantation in final stages. Drain surplus water from betel vine nurseries.',
+      bulletinHi: 'अमन धान की रोपाई अंतिम दौर में। पान के बरेजों से अतिरिक्त पानी तुरंत निकालें।',
+      crops: [
+        { name: 'Paddy / धान', advice: 'Maintain 3-4 cm water depth in newly planted fields.', stage: 'Transplanting' },
+        { name: 'Jute / पटसन', advice: 'Ideal retting water temperatures across ponds.', stage: 'Retting' }
+      ]
+    },
+    personaTips: {
+      student: {
+        en: 'Humid afternoon! Tram and bus travel normal. Keep a raincoat handy for late afternoon Kalbaishakhi thundershowers.',
+        hi: 'उमस भरा दिन! ट्राम और बस सेवा सामान्य है। शाम को तेज बौछार की संभावना के चलते छाता साथ रखें।'
+      },
+      farmer: {
+        en: 'Soil moisture is optimal at 74%. Good conditions for Aman rice tillering. Secure irrigation bunds.',
+        hi: 'मिट्टी में 74% नमी है। अमन धान के कल्ले फूटने के लिए अनुकूल समय है। मेड़ों को मजबूत रखें।'
+      },
+      senior_health: {
+        en: 'Elevated relative humidity (82%). Drink coconut water and tender fluids; keep interiors airy.',
+        hi: '82% की अधिक नमी में निर्जलीकरण से बचें। नारियल पानी पिएं और कमरों में हवा का आवागमन बनाए रखें।'
+      },
+      commuter: {
+        en: 'Howrah Bridge & Vidyasagar Setu clear. Ferry services across Babu Ghat operating on scheduled intervals.',
+        hi: 'हावड़ा ब्रिज व विद्यासागर सेतु पर यातायात सुगम है। बाबू घाट से नौका सेवाएं समय पर चल रही हैं।'
+      },
+      fitness: {
+        en: 'High sweat index! Best running window: 5:30 AM - 6:45 AM around Rabindra Sarovar lake.',
+        hi: 'पसीना अधिक निकलेगा! रवींद्र सरोवर के चारों ओर सुबह 5:30 से 6:45 बजे दौड़ना सबसे उत्तम है।'
+      },
+      coastal: {
+        en: 'Hooghly tidal surge warning active during afternoon high tide. Sundarbans delta alerts issued.',
+        hi: 'दोपहर के समय हुगली में ज्वार का उभार संभव है। सुंदरवन डेल्टा के लिए सामान्य सतर्कता जारी।'
+      },
+      traveler: {
+        en: 'Victoria Memorial gardens pleasant in evening breeze. Carry umbrella while visiting Park Street & New Market.',
+        hi: 'शाम को विक्टोरिया मेमोरियल का मौसम खुशनुमा रहेगा। बाजारों में भ्रमण के दौरान छाता साथ रखें।'
+      },
+      event: {
+        en: 'Outdoor Comfort Score: 6.2/10. Safe for pandal and cultural gatherings with waterproof rain shades.',
+        hi: 'आउटडोर कम्फर्ट स्कोर: 6.2/10। पंडाल व सांस्कृतिक आयोजनों में वाटरप्रूफ शेड की व्यवस्था आवश्यक है।'
+      }
+    },
+    hourly: [
+      { time: '10 AM', temp: 30, pop: 35, icon: 'cloud-sun' },
+      { time: '12 PM', temp: 32, pop: 45, icon: 'cloud-sun' },
+      { time: '02 PM', temp: 33, pop: 55, icon: 'cloud-rain' },
+      { time: '04 PM', temp: 31, pop: 70, icon: 'cloud-lightning' },
+      { time: '06 PM', temp: 29, pop: 60, icon: 'cloud-rain' },
+      { time: '08 PM', temp: 28, pop: 30, icon: 'cloud' },
+      { time: '10 PM', temp: 27, pop: 20, icon: 'moon' }
+    ]
+  },
+  'bengaluru': {
+    id: 'bengaluru',
+    name: 'Bengaluru',
+    nameHi: 'बेंगलुरु',
+    state: 'Karnataka',
+    stateHi: 'कर्नाटक',
+    temp: 26,
+    feelsLike: 25,
+    condition: 'Pleasant & Mild Breeze',
+    conditionHi: 'सुहावना मौसम व ठंडी बयार',
+    iconType: 'cloud-sun',
+    tempMin: 19,
+    tempMax: 28,
+    humidity: 68,
+    rainfallChance: 30,
+    windSpeed: 16,
+    windDirection: 'WSW',
+    pressure: 1012,
+    visibility: 6.0,
+    uvIndex: 6,
+    soilMoisture: 52,
+    isCoastal: false,
+    aqi: {
+      value: 48,
+      status: 'Good / Clean',
+      statusHi: 'उत्तम एवं स्वच्छ',
+      color: '#16A34A',
+      pm25: 14,
+      pm10: 42
+    },
+    daminiLightning: {
+      alertActive: false,
+      distanceKm: 75,
+      strikesCount: 0,
+      statusText: 'No convective lightning over Bengaluru Urban',
+      statusTextHi: 'बेंगलुरु शहरी क्षेत्र में आकाशीय बिजली का कोई खतरा नहीं'
+    },
+    meghdootAgro: {
+      zone: 'Eastern Dry Agro-Climatic Zone',
+      zoneHi: 'पूर्वी शुष्क कृषि क्षेत्र',
+      advisoryDate: '10 September 2026',
+      bulletin: 'Favorable conditions for Ragi (Finger Millet) weeding and inter-cultivation. Monitor red gram for pod borers.',
+      bulletinHi: 'रागी की फसल में निराई-गुड़ाई का अनुकूल समय। अरहर में कीटों की निगरानी करें।',
+      crops: [
+        { name: 'Ragi / रागी', advice: 'Thinning of seedlings to maintain proper spacing.', stage: 'Vegetative' },
+        { name: 'Vegetables / तरकारी', advice: 'Provide stakes for tomato and capsicum plants.', stage: 'Flowering' }
+      ]
+    },
+    personaTips: {
+      student: {
+        en: 'Perfect outdoor school weather (25°C). Great for sports period and playground science experiments.',
+        hi: 'स्कूल के खेल और बाहरी गतिविधियों के लिए बेहद सुखद मौसम (25°C)।'
+      },
+      farmer: {
+        en: 'Adequate soil moisture (52%). Good window for dryland horticultural planting and manure application.',
+        hi: 'मिट्टी में 52% नमी है। बागवानी फसलों में जैविक खाद देने का सबसे बढ़िया समय है।'
+      },
+      senior_health: {
+        en: 'Pristine AQI (48) with comfortable 24-26°C. Excellent day for evening walks in Cubbon Park or Lalbagh.',
+        hi: 'हवा बहुत साफ (AQI 48) है। कब्बन पार्क या लालबाग में शाम की सैर के लिए आदर्श दिन।'
+      },
+      commuter: {
+        en: 'Smooth traffic on Outer Ring Road (ORR) and Silk Board. Mild passing clouds, no waterlogging expected.',
+        hi: 'आउटर रिंग रोड और सिल्क बोर्ड पर यातायात सामान्य है। जलभराव का कोई खतरा नहीं है।'
+      },
+      fitness: {
+        en: 'Runner’s paradise today! Comfortable temperatures and low humidity throughout morning and evening.',
+        hi: 'दौड़ने के लिए बेहतरीन मौसम! सुबह और शाम दोनों समय सुहावना तापमान रहेगा।'
+      },
+      coastal: {
+        en: 'Inland plateau elevation (920m). Kere lake cascade system functioning normally without overflow risk.',
+        hi: 'पठारी क्षेत्र। झीलों और जलाशयों का जलस्तर सामान्य सीमा के अंदर है।'
+      },
+      traveler: {
+        en: 'Pleasant weather for exploring Vidhana Soudha, Bangalore Palace, and Nandi Hills.',
+        hi: 'विधान सौध, पैलेस और नंदी हिल्स घूमने के लिए बेहद खुशनुमा और सुहावना मौसम।'
+      },
+      event: {
+        en: 'Outdoor Comfort Score: 9.4/10. Outstanding conditions for open-air weddings, concerts, and gatherings.',
+        hi: 'आउटडोर कम्फर्ट स्कोर: 9.4/10। खुले में शादी, संगीत समारोह या कार्यक्रमों के लिए सर्वोत्तम दिन।'
+      }
+    },
+    hourly: [
+      { time: '10 AM', temp: 23, pop: 10, icon: 'sun' },
+      { time: '12 PM', temp: 26, pop: 15, icon: 'cloud-sun' },
+      { time: '02 PM', temp: 27, pop: 25, icon: 'cloud-sun' },
+      { time: '04 PM', temp: 26, pop: 35, icon: 'cloud' },
+      { time: '06 PM', temp: 24, pop: 30, icon: 'cloud-rain' },
+      { time: '08 PM', temp: 22, pop: 15, icon: 'cloud' },
+      { time: '10 PM', temp: 20, pop: 10, icon: 'moon' }
+    ]
+  },
+  'jaipur': {
+    id: 'jaipur',
+    name: 'Jaipur',
+    nameHi: 'जयपुर',
+    state: 'Rajasthan',
+    stateHi: 'राजस्थान',
+    temp: 36,
+    feelsLike: 40,
+    condition: 'Sunny & Dry Heat',
+    conditionHi: 'तेज धूप और गर्म मौसम',
+    iconType: 'sun',
+    tempMin: 27,
+    tempMax: 38,
+    humidity: 42,
+    rainfallChance: 15,
+    windSpeed: 12,
+    windDirection: 'WNW',
+    pressure: 1007,
+    visibility: 5.5,
+    uvIndex: 9,
+    soilMoisture: 32,
+    isCoastal: false,
+    aqi: {
+      value: 165,
+      status: 'Moderate to Poor',
+      statusHi: 'मध्यम से खराब',
+      color: '#EAB308',
+      pm25: 68,
+      pm10: 175
+    },
+    daminiLightning: {
+      alertActive: false,
+      distanceKm: 90,
+      strikesCount: 0,
+      statusText: 'No lightning activity across eastern Rajasthan plains',
+      statusTextHi: 'पूर्वी राजस्थान के मैदानी भाग में बिजली का कोई खतरा नहीं'
+    },
+    meghdootAgro: {
+      zone: 'Semi-Arid Eastern Plain Zone',
+      zoneHi: 'अर्ध-शुष्क पूर्वी मैदानी क्षेत्र',
+      advisoryDate: '10 September 2026',
+      bulletin: 'Irrigate Pearl Millet (Bajra) and Guar during critical flowering stage. Harvest rainwater into farm ponds (Khets).',
+      bulletinHi: 'बाजरा और ग्वार में फूल आने की अवस्था पर सिंचाई करें। खेत-तलाई में वर्षा जल संचित करें।',
+      crops: [
+        { name: 'Bajra / बाजरा', advice: 'Provide light sprinkler irrigation in sandy soils.', stage: 'Grain Filling' },
+        { name: 'Guar / ग्वार', advice: 'Spray 2% DAP solution to support pod development.', stage: 'Pod Formation' }
+      ]
+    },
+    personaTips: {
+      student: {
+        en: 'High UV Index (9)! Wear a broad-brim sunhat and carry a water flask to school. Stay in shade during lunch break.',
+        hi: 'तेज धूप और यूवी इंडेक्स 9! स्कूल में पानी की बोतल रखें और दोपहर में धूप में खेलने से बचें।'
+      },
+      farmer: {
+        en: 'Soil moisture is 32%. Operate drip irrigation systems early in morning to minimize evaporative water loss.',
+        hi: 'मिट्टी में 32% नमी है। वाष्पीकरण से बचने के लिए सुबह के समय ही ड्रिप से सिंचाई करें।'
+      },
+      senior_health: {
+        en: 'High afternoon temperature (38°C). Avoid stepping out between 12 PM and 4 PM. Consume lemonade or chaas.',
+        hi: 'दोपहर में 38°C तक गर्मी रहेगी। 12 से 4 बजे बाहर निकलने से बचें, नींबू पानी या छाछ का सेवन करें।'
+      },
+      commuter: {
+        en: 'Road surfaces hot. Keep vehicle tires properly pressurized. Clear visibility on Jaipur-Ajmer Expressway.',
+        hi: 'सड़कें गर्म रहेंगी। वाहनों के टायर में हवा का दबाव सही रखें। एक्सप्रेसवे पर दृश्यता सामान्य है।'
+      },
+      fitness: {
+        en: 'Outdoor running only safe before 6:30 AM. Extreme dehydration risk in late morning hours.',
+        hi: 'दौड़ने के लिए केवल सुबह 6:30 से पहले का समय सुरक्षित है। बाद में लू और डिहाइड्रेशन का खतरा है।'
+      },
+      coastal: {
+        en: 'Semi-arid desert border. Traditional Baoris and Kund reservoirs holding adequate storage reserves.',
+        hi: 'रेगिस्तानी क्षेत्र। पारंपरिक बावड़ियों व कुंडों में जल स्तर संतोषजनक बना हुआ है।'
+      },
+      traveler: {
+        en: 'Visit Amer Fort and Hawa Mahal during cooler morning hours (8 AM - 10:30 AM). Keep sunglasses handy.',
+        hi: 'आमेर किला और हवा महल घूमने सुबह 8 से 10:30 बजे के बीच जाएं। धूप का चश्मा साथ रखें।'
+      },
+      event: {
+        en: 'Outdoor Comfort Score: 5.0/10 during day; improves to 8.0/10 post 7:30 PM under desert evening breeze.',
+        hi: 'दिन में गर्मी रहेगी, लेकिन शाम 7:30 बजे के बाद गुलाबी ठंडक से आउटडोर कार्यक्रम सुखद रहेंगे।'
+      }
+    },
+    hourly: [
+      { time: '10 AM', temp: 33, pop: 5, icon: 'sun' },
+      { time: '12 PM', temp: 36, pop: 10, icon: 'sun' },
+      { time: '02 PM', temp: 38, pop: 10, icon: 'sun' },
+      { time: '04 PM', temp: 37, pop: 15, icon: 'sun' },
+      { time: '06 PM', temp: 34, pop: 15, icon: 'cloud-sun' },
+      { time: '08 PM', temp: 31, pop: 10, icon: 'moon' },
+      { time: '10 PM', temp: 29, pop: 5, icon: 'moon' }
+    ]
+  },
+  'chennai': {
+    id: 'chennai',
+    name: 'Chennai',
+    nameHi: 'चेन्नई',
+    state: 'Tamil Nadu',
+    stateHi: 'तमिलनाडु',
+    temp: 31,
+    feelsLike: 37,
+    condition: 'Coastal Breezy & Humid',
+    conditionHi: 'तटीय हवा व समुद्री नमी',
+    iconType: 'cloud-rain',
+    tempMin: 26,
+    tempMax: 33,
+    humidity: 80,
+    rainfallChance: 55,
+    windSpeed: 20,
+    windDirection: 'ENE',
+    pressure: 1008,
+    visibility: 4.5,
+    uvIndex: 7,
+    soilMoisture: 66,
+    isCoastal: true,
+    tide: {
+      highTide: '11:30 AM (1.25 meters)',
+      highTideHi: 'सुबह 11:30 बजे (1.25 मीटर)',
+      lowTide: '05:45 PM (0.35 meters)',
+      lowTideHi: 'शाम 05:45 बजे (0.35 मीटर)',
+      marineWarning: 'Small fishing craft advised to exercise caution along North Tamil Nadu coast',
+      marineWarningHi: 'उत्तर तमिलनाडु तट पर छोटी नौकाओं को सतर्कता बरतने की सलाह'
+    },
+    aqi: {
+      value: 58,
+      status: 'Satisfactory',
+      statusHi: 'संतोषजनक',
+      color: '#16A34A',
+      pm25: 18,
+      pm10: 52
+    },
+    daminiLightning: {
+      alertActive: false,
+      distanceKm: 48,
+      strikesCount: 1,
+      statusText: 'Scattered offshore lightning 48 km East into Bay of Bengal',
+      statusTextHi: 'बंगाल की खाड़ी में ४८ किमी दूर समुद्र के ऊपर हल्की आकाशीय चमक'
+    },
+    meghdootAgro: {
+      zone: 'North Eastern Coastal Agro-Climatic Zone',
+      zoneHi: 'पूर्वोत्तर तटीय कृषि क्षेत्र',
+      advisoryDate: '10 September 2026',
+      bulletin: 'Prepare nursery beds for Samba paddy sowing. Ensure proper drainage in coastal groundnut plots.',
+      bulletinHi: 'सांबा धान की बुवाई हेतु नर्सरी तैयार करें। मूंगफली के खेतों में जल निकासी दुरुस्त रखें।',
+      crops: [
+        { name: 'Paddy (Samba) / சம்பா நெல்', advice: 'Treat seeds with Pseudomonas fluorescens before sowing.', stage: 'Nursery' },
+        { name: 'Groundnut / நிலக்கடலை', advice: 'Watch for tikka leaf spot in humid morning dew.', stage: 'Vegetative' }
+      ]
+    },
+    personaTips: {
+      student: {
+        en: 'Breezy coastal commute. Carry an umbrella as short passing coastal showers are likely near 3 PM.',
+        hi: 'समुद्री हवा का आनंद! दोपहर 3 बजे के आसपास हल्की फुहारें पड़ सकती हैं, छाता साथ रखें।'
+      },
+      farmer: {
+        en: 'Soil moisture is 66%. Good period for land preparation ahead of the Northeast Monsoon onset.',
+        hi: 'मिट्टी में 66% नमी है। पूर्वोत्तर मानसून के आगमन से पहले खेत की तैयारी का उचित समय।'
+      },
+      senior_health: {
+        en: 'Warm sea breeze (31°C). Good air quality (AQI 58). Enjoy the pleasant evening breeze along Marina promenade.',
+        hi: 'हल्की समुद्री धूप और स्वच्छ हवा। मरीना बीच पर शाम की ताजी हवा का आनंद लें।'
+      },
+      commuter: {
+        en: 'Traffic moving well on Mount Road & OMR. Light showers may cause minor slowdowns near Guindy.',
+        hi: 'माउंट रोड और ओएमआर पर यातायात सामान्य है। गिंडी के पास हल्की बारिश से वाहन धीमे हो सकते हैं।'
+      },
+      fitness: {
+        en: 'Seafront running along Besant Nagar / Elliot’s Beach is wonderful between 5:30 AM and 6:45 AM.',
+        hi: 'इलियट्स बीच और बेसेंट नगर के तट पर सुबह 5:30 से 6:45 बजे दौड़ने के लिए सुहावना मौसम।'
+      },
+      coastal: {
+        en: 'INCOIS Yellow Flag alert: Moderate wave swells up to 2.2m. Beach visitors advised to heed lifeguard flags.',
+        hi: '२.२ मीटर तक की लहरें उठने की संभावना। समुद्र तट पर जाने वाले लोग लाइफगार्ड की सलाह मानें।'
+      },
+      traveler: {
+        en: 'Great day for heritage walks at Kapaleeshwarar Temple and UNESCO Shore Temple in Mamallapuram.',
+        hi: 'कपालेश्वर मंदिर और महाबलीपुरम के तटीय मंदिरों के भ्रमण के लिए अच्छा दिन।'
+      },
+      event: {
+        en: 'Outdoor Comfort Score: 7.6/10. Evening sea breeze makes open-air lawn events delightful after sunset.',
+        hi: 'आउटडोर कम्फर्ट स्कोर: 7.6/10। सूर्यास्त के बाद ठंडी समुद्री बयार से आउटडोर आयोजन शानदार रहेंगे।'
+      }
+    },
+    hourly: [
+      { time: '10 AM', temp: 29, pop: 25, icon: 'cloud-sun' },
+      { time: '12 PM', temp: 31, pop: 35, icon: 'cloud-sun' },
+      { time: '02 PM', temp: 32, pop: 45, icon: 'cloud-rain' },
+      { time: '04 PM', temp: 30, pop: 55, icon: 'cloud-rain' },
+      { time: '06 PM', temp: 28, pop: 40, icon: 'cloud' },
+      { time: '08 PM', temp: 27, pop: 25, icon: 'moon' },
+      { time: '10 PM', temp: 26, pop: 15, icon: 'moon' }
     ]
   }
+
 };
 
 export const MOES_ANALYTICS_DATA = {
