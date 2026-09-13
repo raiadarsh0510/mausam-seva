@@ -11,6 +11,7 @@ import { WeatherNoticeBoard } from './components/WeatherNoticeBoard';
 import { NavigationMenuDrawer } from './components/NavigationMenuDrawer';
 import { CrowdsourceModal } from './components/CrowdsourceModal';
 import { MausamPrismModal } from './components/voice/MausamPrismModal';
+import { OfflineDispatchHub } from './components/OfflineDispatchHub';
 import { Footer } from './components/Footer';
 import { MoESDashboard } from './components/moes/MoESDashboard';
 import { RegionalHeritageWatermark } from './components/RegionalHeritageWatermark';
@@ -48,6 +49,7 @@ export default function App() {
   // Crowdsource Modal State
   const [isCrowdsourceOpen, setIsCrowdsourceOpen] = useState(false);
   const [isVoicePrismOpen, setIsVoicePrismOpen] = useState(false);
+  const [isOfflineHubOpen, setIsOfflineHubOpen] = useState(false);
 
   // Login handler
   const handleLogin = (role) => {
@@ -267,6 +269,7 @@ export default function App() {
             lang={lang} 
             activeAlertLevel={activeAlertLevel}
             setActiveAlertLevel={setActiveAlertLevel}
+            onOpenOfflineHub={() => setIsOfflineHubOpen(true)}
           />
         </main>
       )}
@@ -288,6 +291,7 @@ export default function App() {
         setHighContrast={setHighContrast}
         onOpenCrowdsource={() => setIsCrowdsourceOpen(true)}
         onOpenVoicePrism={() => setIsVoicePrismOpen(true)}
+        onOpenOfflineHub={() => setIsOfflineHubOpen(true)}
       />
 
       {/* Crowdsource Verification Dialog */}
@@ -305,6 +309,14 @@ export default function App() {
         currentCityId={cityId}
         activePersona={activePersona}
         appLang={lang}
+      />
+
+      {/* ZERO-DEVICE OFFLINE EMERGENCY DISPATCH HUB */}
+      <OfflineDispatchHub
+        isOpen={isOfflineHubOpen}
+        onClose={() => setIsOfflineHubOpen(false)}
+        activeAlertLevel={activeAlertLevel}
+        lang={lang}
       />
     </div>
   );

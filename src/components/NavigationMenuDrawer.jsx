@@ -22,7 +22,8 @@ export function NavigationMenuDrawer({
   highContrast,
   setHighContrast,
   onOpenCrowdsource,
-  onOpenVoicePrism
+  onOpenVoicePrism,
+  onOpenOfflineHub
 }) {
   if (!isOpen) return null;
 
@@ -277,6 +278,32 @@ export function NavigationMenuDrawer({
               </div>
               <span className="text-[10px] font-mono bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold">
                 +10 Karma
+              </span>
+            </button>
+
+            {/* Offline Dispatch Hub / Zero-Device Safety */}
+            <button
+              onClick={() => {
+                onClose();
+                onOpenOfflineHub && onOpenOfflineHub();
+              }}
+              className="w-full flex items-center justify-between p-3 rounded-2xl text-xs font-bold text-amber-950 bg-gradient-to-r from-amber-50 to-orange-50/50 hover:from-amber-100 hover:to-orange-100/70 border border-amber-300/80 transition-all shadow-xs"
+            >
+              <div className="flex items-center gap-3">
+                <div className="p-2 rounded-xl bg-amber-500 text-white shadow-xs">
+                  <Radio className="w-4 h-4" />
+                </div>
+                <div className="text-left">
+                  <span className="block font-bold">
+                    {lang === 'hi' ? 'आपातकालीन ऑफलाइन हब (Zero-Device)' : 'Zero-Device Offline Hub'}
+                  </span>
+                  <span className="text-[10px] text-amber-800 font-normal">
+                    {lang === 'hi' ? 'ग्राम पंचायत सायरन, 1800 टोलफ्री IVR व CAP' : 'Panchayat sirens, 1800-IVR & CAP broadcasts'}
+                  </span>
+                </div>
+              </div>
+              <span className="text-[10px] font-mono bg-amber-200 text-amber-900 border border-amber-400 px-2 py-0.5 rounded font-black">
+                OFFLINE
               </span>
             </button>
 

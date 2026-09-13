@@ -8,7 +8,7 @@ import {
 import { MOES_ANALYTICS_DATA, WEATHER_ALERT_LEVELS } from '../../data/mockWeatherData';
 import { PersonaDataViewer } from './PersonaDataViewer';
 
-export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel }) {
+export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel, onOpenOfflineHub }) {
   const [activeModelTab, setActiveModelTab] = useState('agriculture');
   const [alertSent, setAlertSent] = useState(false);
   const [showComparisonModal, setShowComparisonModal] = useState(false);
@@ -75,6 +75,16 @@ export function MoESDashboard({ lang, activeAlertLevel, setActiveAlertLevel }) {
             >
               <Scale className="w-4 h-4 text-sky-300" />
               <span>{lang === 'hi' ? 'मॉडल तुलना व अंतर' : 'Gap Analysis & Comparison'}</span>
+            </button>
+
+            {/* Direct Navigation Button: Offline Dispatch Hub */}
+            <button
+              onClick={onOpenOfflineHub}
+              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white border border-amber-400/50 text-xs font-black transition-all shadow-md shadow-amber-900/40"
+              title="Activate Panchayat Sirens, 1800-IVR, & CAP Dispatch"
+            >
+              <Radio className="w-4 h-4 text-amber-200 animate-pulse" />
+              <span>{lang === 'hi' ? 'ऑफलाइन आपदा प्रेषण (Offline Hub)' : 'Offline Dispatch Hub'}</span>
             </button>
 
             <div className="flex items-center gap-2 text-xs font-mono bg-[#0B1528] px-3 py-1.5 rounded-lg border border-purple-500/30">
