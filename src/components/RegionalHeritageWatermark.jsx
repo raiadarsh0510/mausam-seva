@@ -4,206 +4,372 @@ import { REGIONAL_HERITAGE_DATA } from '../data/regionalHeritageData';
 
 /**
  * RegionalHeritageWatermark
- * Renders an ethereal, ultra-light background layer in the Citizen Dashboard
- * featuring stylized architectural monuments and traditional Indian motifs
- * (Warli, Kolam, Alpana, Jali, Paisley, etc.) customized per selected region.
+ * Renders a rich, full-color architectural heritage mural watermark in the Citizen Dashboard
+ * featuring vibrant regional monuments and cultural motifs (India Gate, Gateway of India,
+ * Rumi Darwaza, Christ Church, Howrah Bridge, Vidhana Soudha, Hawa Mahal, Shore Temple).
  */
 export function RegionalHeritageWatermark({ cityId = 'delhi' }) {
   const heritage = REGIONAL_HERITAGE_DATA[cityId] || REGIONAL_HERITAGE_DATA['delhi'];
 
-  // Monument SVGs based on region
+  // Vibrant Full-Color Monument SVGs based on selected region
   const renderMonumentSvg = () => {
     switch (heritage.monumentSvgType) {
       case 'india_gate':
         return (
-          <svg viewBox="0 0 400 350" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full stroke-current">
-            {/* Base platform */}
-            <path d="M40 330 H360 V340 H40 Z" strokeWidth="3" />
-            <path d="M60 320 H340 V330 H60 Z" strokeWidth="2.5" />
-            <path d="M80 305 H320 V320 H80 Z" strokeWidth="2" />
+          <svg viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg" className="w-full h-full drop-shadow-xl">
+            <defs>
+              <linearGradient id="delhiStone" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stopColor="#DC2626" />
+                <stop offset="50%" stopColor="#B91C1C" />
+                <stop offset="100%" stopColor="#991B1B" />
+              </linearGradient>
+              <linearGradient id="delhiGold" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#FDE047" />
+                <stop offset="100%" stopColor="#D97706" />
+              </linearGradient>
+              <linearGradient id="delhiSky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#FEF3C7" stopOpacity="0.85" />
+                <stop offset="100%" stopColor="#FDE68A" stopOpacity="0.3" />
+              </linearGradient>
+            </defs>
+            {/* Plinth Base Steps */}
+            <rect x="30" y="330" width="340" height="15" rx="3" fill="#78350F" />
+            <rect x="50" y="318" width="300" height="14" rx="2" fill="#9A3412" />
+            <rect x="75" y="305" width="250" height="15" fill="#B45309" />
             {/* Main Pylons */}
-            <path d="M90 305 V110 H145 V305" strokeWidth="2.5" />
-            <path d="M255 305 V110 H310 V305" strokeWidth="2.5" />
-            {/* Center Arch */}
-            <path d="M145 305 V170 C145 125, 255 125, 255 170 V305" strokeWidth="3" />
-            <path d="M158 305 V175 C158 140, 242 140, 242 175 V305" strokeWidth="1.5" strokeDasharray="3 3" />
-            {/* Top Attic & Cornice */}
-            <path d="M75 110 H325 V90 H75 Z" strokeWidth="2.5" />
-            <path d="M95 90 H305 V65 H95 Z" strokeWidth="2" />
-            <path d="M120 65 H280 V45 H120 Z" strokeWidth="2" />
-            {/* Dome canopy crown */}
-            <path d="M165 45 C165 20, 235 20, 235 45 Z" strokeWidth="2" />
-            <circle cx="200" cy="20" r="3" fill="currentColor" />
-            {/* Inscriptions and architectural moldings */}
-            <line x1="100" y1="78" x2="300" y2="78" strokeWidth="1.5" />
-            <line x1="110" y1="125" x2="130" y2="125" strokeWidth="1.5" />
-            <line x1="270" y1="125" x2="290" y2="125" strokeWidth="1.5" />
+            <rect x="85" y="110" width="65" height="195" fill="url(#delhiStone)" />
+            <rect x="250" y="110" width="65" height="195" fill="url(#delhiStone)" />
+            {/* Arch Aperture Backing Glow */}
+            <path d="M150 305 V175 C150 120, 250 120, 250 175 V305 Z" fill="url(#delhiSky)" />
+            {/* Center Arch Border */}
+            <path d="M148 305 V175 C148 118, 252 118, 252 175 V305 H240 V175 C240 130, 160 130, 160 175 V305 Z" fill="#FBBF24" />
+            {/* Cornice Entablature */}
+            <rect x="70" y="90" width="260" height="22" rx="3" fill="#B91C1C" stroke="#FEF08A" strokeWidth="1" />
+            <rect x="90" y="68" width="220" height="24" rx="2" fill="#DC2626" />
+            <rect x="115" y="48" width="170" height="22" rx="2" fill="#EA580C" />
+            {/* Crown Cenotaph Canopy */}
+            <path d="M165 48 C165 18, 235 18, 235 48 Z" fill="url(#delhiGold)" stroke="#78350F" strokeWidth="1.5" />
+            <circle cx="200" cy="18" r="4" fill="#FDE047" stroke="#B45309" strokeWidth="1" />
+            {/* Gold Moldings */}
+            <rect x="95" y="78" width="210" height="3" fill="#FDE047" />
+            <rect x="100" y="120" width="35" height="4" rx="1" fill="#FDE047" />
+            <rect x="265" y="120" width="35" height="4" rx="1" fill="#FDE047" />
+            {/* Eternal Flame Amar Jawan Jyoti Base */}
+            <path d="M190 305 L200 280 L210 305 Z" fill="#F59E0B" />
+            <circle cx="200" cy="278" r="5" fill="#EF4444" />
           </svg>
         );
 
       case 'gateway_india':
         return (
-          <svg viewBox="0 0 400 350" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full stroke-current">
-            {/* Steps plinth */}
-            <path d="M30 335 H370 V345 H30 Z" strokeWidth="3" />
-            <path d="M50 325 H350 V335 H50 Z" strokeWidth="2.5" />
-            {/* Outer Minarets */}
-            <path d="M55 325 V90 H95 V325" strokeWidth="2.5" />
-            <path d="M305 325 V90 H345 V325" strokeWidth="2.5" />
-            {/* Minaret Domes */}
-            <path d="M55 90 C55 60, 95 60, 95 90 Z" strokeWidth="2" />
-            <path d="M305 90 C305 60, 345 60, 345 90 Z" strokeWidth="2" />
-            {/* Center Massive Arch */}
-            <path d="M125 325 V160 C125 95, 275 95, 275 160 V325" strokeWidth="3" />
-            <path d="M140 325 V170 C140 115, 260 115, 260 170 V325" strokeWidth="1.5" strokeDasharray="4 3" />
-            {/* Side subsidiary arches */}
-            <path d="M95 325 V210 C95 190, 125 190, 125 210 V325" strokeWidth="2" />
-            <path d="M275 325 V210 C275 190, 305 190, 305 210 V325" strokeWidth="2" />
-            {/* Central Grand Dome */}
-            <path d="M130 90 H270 V75 H130 Z" strokeWidth="2.5" />
-            <path d="M145 75 C145 25, 255 25, 255 75 Z" strokeWidth="2.5" />
-            <line x1="200" y1="25" x2="200" y2="10" strokeWidth="2" />
-            {/* Arabian sea wave ripples at base */}
-            <path d="M20 348 Q40 342, 60 348 T100 348 T140 348 T180 348 T220 348 T260 348 T300 348 T340 348 T380 348" strokeWidth="1.5" />
+          <svg viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg" className="w-full h-full drop-shadow-xl">
+            <defs>
+              <linearGradient id="mumbaiBasalt" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#F59E0B" />
+                <stop offset="40%" stopColor="#D97706" />
+                <stop offset="100%" stopColor="#78350F" />
+              </linearGradient>
+              <linearGradient id="mumbaiSea" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stopColor="#0284C7" />
+                <stop offset="50%" stopColor="#06B6D4" />
+                <stop offset="100%" stopColor="#0284C7" />
+              </linearGradient>
+              <linearGradient id="mumbaiGold" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#FEF08A" />
+                <stop offset="100%" stopColor="#D97706" />
+              </linearGradient>
+            </defs>
+            {/* Arabian Sea Waves */}
+            <path d="M10 345 Q40 338, 70 345 T130 345 T190 345 T250 345 T310 345 T370 345 V360 H10 Z" fill="url(#mumbaiSea)" />
+            <path d="M25 352 Q55 345, 85 352 T145 352 T205 352 T265 352 T325 352 T385 352 V360 H25 Z" fill="#0369A1" opacity="0.7" />
+            {/* Plinth */}
+            <rect x="25" y="325" width="350" height="12" rx="2" fill="#78350F" />
+            <rect x="45" y="315" width="310" height="12" fill="#92400E" />
+            {/* Outer Turrets */}
+            <rect x="50" y="90" width="45" height="225" fill="url(#mumbaiBasalt)" />
+            <rect x="305" y="90" width="45" height="225" fill="url(#mumbaiBasalt)" />
+            {/* Turret Domes */}
+            <path d="M50 90 C50 55, 95 55, 95 90 Z" fill="url(#mumbaiGold)" stroke="#78350F" />
+            <path d="M305 90 C305 55, 350 55, 350 90 Z" fill="url(#mumbaiGold)" stroke="#78350F" />
+            <circle cx="72.5" cy="52" r="3" fill="#FEF08A" />
+            <circle cx="327.5" cy="52" r="3" fill="#FEF08A" />
+            {/* Center Mass Arch Structure */}
+            <rect x="95" y="90" width="210" height="225" fill="url(#mumbaiBasalt)" />
+            {/* Grand Central Arch Cutout */}
+            <path d="M130 315 V165 C130 90, 270 90, 270 165 V315 Z" fill="#FFFBEB" />
+            <path d="M142 315 V175 C142 110, 258 110, 258 175 V315 Z" fill="#BAE6FD" opacity="0.6" />
+            {/* Center Dome on Top */}
+            <rect x="125" y="75" width="150" height="18" rx="3" fill="#B45309" />
+            <path d="M140 75 C140 20, 260 20, 260 75 Z" fill="url(#mumbaiGold)" stroke="#78350F" strokeWidth="1.5" />
+            <line x1="200" y1="20" x2="200" y2="8" stroke="#FDE047" strokeWidth="3" />
+            <circle cx="200" cy="6" r="3" fill="#FEF08A" />
+            {/* Side Small Arches */}
+            <path d="M100 315 V215 C100 195, 125 195, 125 215 V315 Z" fill="#FEF3C7" />
+            <path d="M275 315 V215 C275 195, 300 195, 300 215 V315 Z" fill="#FEF3C7" />
           </svg>
         );
 
       case 'rumi_darwaza':
         return (
-          <svg viewBox="0 0 400 350" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full stroke-current">
-            {/* Base */}
-            <path d="M50 330 H350" strokeWidth="3" />
-            {/* Flying semi-circular Awadhi portal arch */}
-            <path d="M70 330 V220 C70 110, 150 50, 200 50 C250 50, 330 110, 330 220 V330" strokeWidth="3" />
-            <path d="M95 330 V230 C95 140, 160 85, 200 85 C240 85, 305 140, 305 230 V330" strokeWidth="2" strokeDasharray="4 4" />
-            {/* Crown Chhatri */}
-            <path d="M180 50 C180 20, 220 20, 220 50 Z" strokeWidth="2" />
-            <line x1="200" y1="20" x2="200" y2="5" strokeWidth="2" />
-            {/* Cusped arches details */}
-            <path d="M140 330 V260 C140 230, 260 230, 260 260 V330" strokeWidth="2.5" />
-            {/* Jali vents */}
-            <circle cx="200" cy="140" r="18" strokeWidth="1.5" />
-            <circle cx="155" cy="180" r="10" strokeWidth="1.5" />
-            <circle cx="245" cy="180" r="10" strokeWidth="1.5" />
+          <svg viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg" className="w-full h-full drop-shadow-xl">
+            <defs>
+              <linearGradient id="lucknowTerracotta" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stopColor="#EA580C" />
+                <stop offset="50%" stopColor="#C2410C" />
+                <stop offset="100%" stopColor="#9A3412" />
+              </linearGradient>
+              <linearGradient id="lucknowGold" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#FDE047" />
+                <stop offset="100%" stopColor="#D97706" />
+              </linearGradient>
+              <radialGradient id="lucknowGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stopColor="#FEF3C7" />
+                <stop offset="100%" stopColor="#FED7AA" />
+              </radialGradient>
+            </defs>
+            {/* Base Steps */}
+            <rect x="40" y="330" width="320" height="15" fill="#7C2D12" rx="2" />
+            {/* Awadhi Grand Portal */}
+            <path d="M65 330 V220 C65 100, 150 40, 200 40 C250 40, 335 100, 335 220 V330 Z" fill="url(#lucknowTerracotta)" stroke="#FBBF24" strokeWidth="2" />
+            {/* Inner Portal Recess */}
+            <path d="M90 330 V230 C90 135, 155 80, 200 80 C245 80, 310 135, 310 230 V330 Z" fill="url(#lucknowGlow)" />
+            {/* Inner Cusped Doorway */}
+            <path d="M135 330 V260 C135 225, 265 225, 265 260 V330 Z" fill="#9A3412" stroke="#FEF08A" strokeWidth="2" />
+            {/* Crown Chhatri Lantern */}
+            <path d="M175 40 C175 10, 225 10, 225 40 Z" fill="url(#lucknowGold)" stroke="#7C2D12" strokeWidth="1.5" />
+            <line x1="200" y1="10" x2="200" y2="2" stroke="#FDE047" strokeWidth="2" />
+            <circle cx="200" cy="2" r="3" fill="#FEF08A" />
+            {/* Rosette & Jali Windows */}
+            <circle cx="200" cy="140" r="22" fill="#7C3AED" stroke="#FDE047" strokeWidth="2" />
+            <circle cx="200" cy="140" r="14" fill="#FEF08A" />
+            <circle cx="150" cy="180" r="12" fill="#C2410C" stroke="#FDE047" strokeWidth="1.5" />
+            <circle cx="250" cy="180" r="12" fill="#C2410C" stroke="#FDE047" strokeWidth="1.5" />
+            {/* Ornamental Turret Finials */}
+            <circle cx="65" cy="220" r="5" fill="#FDE047" />
+            <circle cx="335" cy="220" r="5" fill="#FDE047" />
           </svg>
         );
 
       case 'himalayan_church':
         return (
-          <svg viewBox="0 0 400 350" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full stroke-current">
-            {/* Mountain Range Backdrop */}
-            <path d="M10 280 L110 160 L190 230 L290 130 L390 280" strokeWidth="2" strokeDasharray="3 3" />
-            <path d="M50 325 H350" strokeWidth="3" />
-            {/* Clock Tower of Christ Church */}
-            <path d="M140 325 V80 H200 V325" strokeWidth="2.5" />
-            {/* Sloping Pyramidal Spire */}
-            <path d="M135 80 L170 15 L205 80 Z" strokeWidth="2.5" />
-            <line x1="170" y1="15" x2="170" y2="5" strokeWidth="2" />
-            {/* Clock face */}
-            <circle cx="170" cy="120" r="16" strokeWidth="2" />
-            <line x1="170" y1="120" x2="170" y2="112" strokeWidth="1.5" />
-            <line x1="170" y1="120" x2="176" y2="120" strokeWidth="1.5" />
-            {/* Gothic Nave Hall */}
-            <path d="M200 325 V170 L280 130 L310 180 V325" strokeWidth="2" />
-            {/* Pine Trees */}
-            <path d="M80 325 L95 240 L110 325 Z M70 280 L95 220 L120 280 Z" strokeWidth="1.5" />
-            <path d="M330 325 L345 250 L360 325 Z M320 290 L345 230 L370 290 Z" strokeWidth="1.5" />
+          <svg viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg" className="w-full h-full drop-shadow-xl">
+            <defs>
+              <linearGradient id="shimlaSnow" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#E0F2FE" />
+                <stop offset="50%" stopColor="#38BDF8" />
+                <stop offset="100%" stopColor="#0284C7" />
+              </linearGradient>
+              <linearGradient id="shimlaPine" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#10B981" />
+                <stop offset="50%" stopColor="#059669" />
+                <stop offset="100%" stopColor="#064E3B" />
+              </linearGradient>
+              <linearGradient id="shimlaStone" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#FDE68A" />
+                <stop offset="50%" stopColor="#D97706" />
+                <stop offset="100%" stopColor="#92400E" />
+              </linearGradient>
+            </defs>
+            {/* Snow Peak Mountains in Background */}
+            <polygon points="10,290 100,130 180,240 280,100 390,290" fill="url(#shimlaSnow)" opacity="0.85" />
+            {/* Snow Caps */}
+            <polygon points="100,130 80,165 100,155 120,165" fill="#FFFFFF" />
+            <polygon points="280,100 260,135 280,125 300,135" fill="#FFFFFF" />
+            {/* Mountain Ground */}
+            <rect x="30" y="325" width="340" height="20" rx="3" fill="#064E3B" />
+            {/* Pine Trees Left */}
+            <polygon points="65,325 80,230 95,325" fill="url(#shimlaPine)" />
+            <polygon points="50,290 80,200 110,290" fill="url(#shimlaPine)" />
+            {/* Pine Trees Right */}
+            <polygon points="325,325 340,240 355,325" fill="url(#shimlaPine)" />
+            <polygon points="310,295 340,210 370,295" fill="url(#shimlaPine)" />
+            {/* Church Gothic Nave Hall */}
+            <polygon points="190,325 190,170 270,120 310,175 310,325" fill="url(#shimlaStone)" stroke="#78350F" strokeWidth="1.5" />
+            {/* Church Tower */}
+            <rect x="135" y="80" width="60" height="245" fill="url(#shimlaStone)" stroke="#78350F" strokeWidth="2" />
+            {/* Steeple Spire */}
+            <polygon points="130,80 165,15 200,80" fill="#047857" stroke="#064E3B" strokeWidth="2" />
+            <line x1="165" y1="15" x2="165" y2="4" stroke="#FDE047" strokeWidth="2.5" />
+            <circle cx="165" cy="3" r="3" fill="#FEF08A" />
+            {/* Golden Glowing Clock Face */}
+            <circle cx="165" cy="125" r="16" fill="#FEF08A" stroke="#B45309" strokeWidth="2" />
+            <line x1="165" y1="125" x2="165" y2="114" stroke="#78350F" strokeWidth="2" />
+            <line x1="165" y1="125" x2="173" y2="125" stroke="#78350F" strokeWidth="2" />
           </svg>
         );
 
       case 'howrah_bridge':
         return (
-          <svg viewBox="0 0 400 350" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full stroke-current">
-            {/* Hooghly Waterline */}
-            <path d="M20 330 H380" strokeWidth="3" />
-            <path d="M30 340 Q70 335, 110 340 T190 340 T270 340 T350 340" strokeWidth="1.5" />
-            {/* Pylons of Cantilever Bridge */}
-            <path d="M80 330 V110 L100 80 L120 110 V330" strokeWidth="2.5" />
-            <path d="M280 330 V110 L300 80 L320 110 V330" strokeWidth="2.5" />
-            {/* Bridge Deck Roadway */}
-            <path d="M30 250 H370" strokeWidth="3" />
-            {/* Cantilever Trusses & Cross Bracings */}
-            <path d="M100 80 L200 160 L300 80" strokeWidth="2" />
-            <path d="M100 80 L50 250 M120 110 L160 250 M280 110 L240 250 M300 80 L350 250" strokeWidth="1.5" />
-            <line x1="160" y1="250" x2="200" y2="160" strokeWidth="1.5" />
-            <line x1="240" y1="250" x2="200" y2="160" strokeWidth="1.5" />
-            <line x1="200" y1="160" x2="200" y2="250" strokeWidth="2" />
+          <svg viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg" className="w-full h-full drop-shadow-xl">
+            <defs>
+              <linearGradient id="kolkataSteel" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#3B82F6" />
+                <stop offset="50%" stopColor="#1D4ED8" />
+                <stop offset="100%" stopColor="#1E3A8A" />
+              </linearGradient>
+              <linearGradient id="kolkataRiver" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stopColor="#0284C7" />
+                <stop offset="50%" stopColor="#06B6D4" />
+                <stop offset="100%" stopColor="#0891B2" />
+              </linearGradient>
+            </defs>
+            {/* Hooghly River Waters */}
+            <rect x="10" y="325" width="380" height="30" fill="url(#kolkataRiver)" rx="3" />
+            <path d="M20 340 Q70 332, 120 340 T220 340 T320 340 T380 340" stroke="#67E8F9" strokeWidth="2" fill="none" />
+            <path d="M40 348 Q90 342, 140 348 T240 348 T340 348" stroke="#BAE6FD" strokeWidth="1.5" fill="none" opacity="0.8" />
+            {/* Riverboat on Hooghly */}
+            <path d="M170 335 L190 335 L200 342 L160 342 Z" fill="#D97706" />
+            <polygon points="178,335 178,322 188,335" fill="#EF4444" />
+            {/* Left Pylon Tower */}
+            <polygon points="75,325 95,75 115,75 135,325" fill="url(#kolkataSteel)" stroke="#93C5FD" strokeWidth="1.5" />
+            {/* Right Pylon Tower */}
+            <polygon points="265,325 285,75 305,75 325,325" fill="url(#kolkataSteel)" stroke="#93C5FD" strokeWidth="1.5" />
+            {/* Roadway Bridge Deck */}
+            <rect x="20" y="245" width="360" height="12" rx="2" fill="#F59E0B" stroke="#78350F" strokeWidth="1.5" />
+            <line x1="20" y1="251" x2="380" y2="251" stroke="#FFFFFF" strokeDasharray="6 4" strokeWidth="2" />
+            {/* Cantilever Truss Network */}
+            <line x1="105" y1="75" x2="200" y2="160" stroke="#1D4ED8" strokeWidth="3" />
+            <line x1="295" y1="75" x2="200" y2="160" stroke="#1D4ED8" strokeWidth="3" />
+            <line x1="200" y1="160" x2="200" y2="245" stroke="#2563EB" strokeWidth="3" />
+            <line x1="105" y1="75" x2="40" y2="245" stroke="#3B82F6" strokeWidth="2" />
+            <line x1="295" y1="75" x2="360" y2="245" stroke="#3B82F6" strokeWidth="2" />
+            <line x1="105" y1="75" x2="160" y2="245" stroke="#60A5FA" strokeWidth="2" />
+            <line x1="295" y1="75" x2="240" y2="245" stroke="#60A5FA" strokeWidth="2" />
           </svg>
         );
 
       case 'vidhana_soudha':
         return (
-          <svg viewBox="0 0 400 350" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full stroke-current">
-            {/* Grand Granite Plinth */}
-            <path d="M40 330 H360 V340 H40 Z" strokeWidth="3" />
-            <path d="M60 320 H340 V330 H60 Z" strokeWidth="2" />
-            {/* Pillars of Central Porch */}
-            <path d="M140 320 V170 H260 V320" strokeWidth="2.5" />
-            <line x1="165" y1="320" x2="165" y2="170" strokeWidth="2" />
-            <line x1="190" y1="320" x2="190" y2="170" strokeWidth="2" />
-            <line x1="210" y1="320" x2="210" y2="170" strokeWidth="2" />
-            <line x1="235" y1="320" x2="235" y2="170" strokeWidth="2" />
-            {/* Central Grand Dome with Lion Capital */}
-            <path d="M170 140 C170 90, 230 90, 230 140 Z" strokeWidth="2.5" />
-            <path d="M150 170 H250 V140 H150 Z" strokeWidth="2" />
-            <line x1="200" y1="90" x2="200" y2="65" strokeWidth="2" />
-            <circle cx="200" cy="60" r="5" strokeWidth="1.5" />
-            {/* Side Wings & Chhatris */}
-            <path d="M60 320 V200 H140 V320" strokeWidth="2" />
-            <path d="M260 320 V200 H340 V320" strokeWidth="2" />
-            <path d="M85 200 C85 170, 115 170, 115 200 Z" strokeWidth="1.5" />
-            <path d="M285 200 C285 170, 315 170, 315 200 Z" strokeWidth="1.5" />
+          <svg viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg" className="w-full h-full drop-shadow-xl">
+            <defs>
+              <linearGradient id="blrGranite" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#818CF8" />
+                <stop offset="50%" stopColor="#4F46E5" />
+                <stop offset="100%" stopColor="#312E81" />
+              </linearGradient>
+              <linearGradient id="blrGold" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#FDE047" />
+                <stop offset="100%" stopColor="#D97706" />
+              </linearGradient>
+            </defs>
+            {/* Plinth */}
+            <rect x="30" y="325" width="340" height="15" rx="3" fill="#1E1B4B" />
+            <rect x="50" y="315" width="300" height="12" fill="#312E81" />
+            {/* Side Wings */}
+            <rect x="50" y="195" width="85" height="120" fill="url(#blrGranite)" />
+            <rect x="265" y="195" width="85" height="120" fill="url(#blrGranite)" />
+            {/* Side Chhatri Domes */}
+            <path d="M75 195 C75 165, 110 165, 110 195 Z" fill="url(#blrGold)" stroke="#312E81" />
+            <path d="M290 195 C290 165, 325 165, 325 195 Z" fill="url(#blrGold)" stroke="#312E81" />
+            {/* Central Portico Structure */}
+            <rect x="135" y="165" width="130" height="150" fill="url(#blrGranite)" />
+            {/* Grand Pillars */}
+            <rect x="145" y="165" width="8" height="150" fill="#E0E7FF" />
+            <rect x="175" y="165" width="8" height="150" fill="#E0E7FF" />
+            <rect x="215" y="165" width="8" height="150" fill="#E0E7FF" />
+            <rect x="245" y="165" width="8" height="150" fill="#E0E7FF" />
+            {/* Central Grand Dome */}
+            <rect x="145" y="145" width="110" height="20" rx="3" fill="#F59E0B" />
+            <path d="M160 145 C160 75, 240 75, 240 145 Z" fill="url(#blrGold)" stroke="#312E81" strokeWidth="2" />
+            {/* Golden Ashoka Lion Capital Crown */}
+            <line x1="200" y1="75" x2="200" y2="52" stroke="#FDE047" strokeWidth="3" />
+            <circle cx="200" cy="48" r="7" fill="#FACC15" stroke="#78350F" strokeWidth="1.5" />
           </svg>
         );
 
       case 'hawa_mahal':
         return (
-          <svg viewBox="0 0 400 350" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full stroke-current">
+          <svg viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg" className="w-full h-full drop-shadow-xl">
+            <defs>
+              <linearGradient id="jaipurPink" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#FB7185" />
+                <stop offset="50%" stopColor="#F43F5E" />
+                <stop offset="100%" stopColor="#BE123C" />
+              </linearGradient>
+              <linearGradient id="jaipurGold" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#FEF08A" />
+                <stop offset="100%" stopColor="#F59E0B" />
+              </linearGradient>
+            </defs>
             {/* Base Street Plinth */}
-            <path d="M60 330 H340" strokeWidth="3" />
-            {/* Pyramid 5-Tier Facade */}
-            {/* Tier 1 (Base) */}
-            <path d="M80 330 V260 H320 V330" strokeWidth="2.5" />
+            <rect x="40" y="325" width="320" height="15" rx="3" fill="#881337" />
+            {/* 5-Tier Honeycomb Pyramid Façade */}
+            {/* Tier 1 */}
+            <rect x="65" y="260" width="270" height="65" fill="url(#jaipurPink)" stroke="#881337" strokeWidth="1.5" />
             {/* Tier 2 */}
-            <path d="M105 260 V200 H295 V260" strokeWidth="2" />
+            <rect x="95" y="200" width="210" height="60" fill="url(#jaipurPink)" stroke="#881337" strokeWidth="1.5" />
             {/* Tier 3 */}
-            <path d="M130 200 V140 H270 V200" strokeWidth="2" />
+            <rect x="125" y="140" width="150" height="60" fill="url(#jaipurPink)" stroke="#881337" strokeWidth="1.5" />
             {/* Tier 4 */}
-            <path d="M155 140 V90 H245 V140" strokeWidth="2" />
+            <rect x="155" y="85" width="90" height="55" fill="url(#jaipurPink)" stroke="#881337" strokeWidth="1.5" />
             {/* Tier 5 (Crown) */}
-            <path d="M180 90 V50 H220 V90" strokeWidth="2" />
-            <path d="M185 50 C185 30, 215 30, 215 50 Z" strokeWidth="2" />
-            {/* Honeycomb Jharokhas */}
-            {/* Casements Tier 1 */}
-            <path d="M110 310 C110 290, 135 290, 135 310 Z M155 310 C155 290, 180 290, 180 310 Z M220 310 C220 290, 245 290, 245 310 Z M265 310 C265 290, 290 290, 290 310 Z" strokeWidth="1.5" />
-            {/* Casements Tier 2 */}
-            <path d="M135 240 C135 220, 160 220, 160 240 Z M185 240 C185 220, 215 220, 215 240 Z M240 240 C240 220, 265 220, 265 240 Z" strokeWidth="1.5" />
-            {/* Casements Tier 3 */}
-            <path d="M160 180 C160 160, 185 160, 185 180 Z M215 180 C215 160, 240 160, 240 180 Z" strokeWidth="1.5" />
-            {/* Casement Tier 4 */}
-            <path d="M190 125 C190 110, 210 110, 210 125 Z" strokeWidth="1.5" />
+            <rect x="175" y="45" width="50" height="40" fill="url(#jaipurPink)" stroke="#881337" strokeWidth="1.5" />
+            <path d="M175 45 C175 22, 225 22, 225 45 Z" fill="url(#jaipurGold)" stroke="#881337" strokeWidth="1.5" />
+            <circle cx="200" cy="20" r="3" fill="#FEF08A" />
+            {/* Ornate Jharokha Casements with glowing white/gold lattice windows */}
+            {/* Tier 1 Jharokhas */}
+            <rect x="90" y="275" width="22" height="35" rx="11" fill="#FFF1F2" stroke="#BE123C" strokeWidth="1.5" />
+            <rect x="140" y="275" width="22" height="35" rx="11" fill="#FFF1F2" stroke="#BE123C" strokeWidth="1.5" />
+            <rect x="190" y="275" width="22" height="35" rx="11" fill="#FFF1F2" stroke="#BE123C" strokeWidth="1.5" />
+            <rect x="240" y="275" width="22" height="35" rx="11" fill="#FFF1F2" stroke="#BE123C" strokeWidth="1.5" />
+            <rect x="290" y="275" width="22" height="35" rx="11" fill="#FFF1F2" stroke="#BE123C" strokeWidth="1.5" />
+            {/* Tier 2 Jharokhas */}
+            <rect x="115" y="215" width="22" height="32" rx="11" fill="#FFF1F2" stroke="#BE123C" strokeWidth="1.5" />
+            <rect x="165" y="215" width="22" height="32" rx="11" fill="#FFF1F2" stroke="#BE123C" strokeWidth="1.5" />
+            <rect x="215" y="215" width="22" height="32" rx="11" fill="#FFF1F2" stroke="#BE123C" strokeWidth="1.5" />
+            <rect x="265" y="215" width="22" height="32" rx="11" fill="#FFF1F2" stroke="#BE123C" strokeWidth="1.5" />
+            {/* Tier 3 Jharokhas */}
+            <rect x="145" y="155" width="22" height="30" rx="11" fill="#FFF1F2" stroke="#BE123C" strokeWidth="1.5" />
+            <rect x="190" y="155" width="22" height="30" rx="11" fill="#FFF1F2" stroke="#BE123C" strokeWidth="1.5" />
+            <rect x="235" y="155" width="22" height="30" rx="11" fill="#FFF1F2" stroke="#BE123C" strokeWidth="1.5" />
+            {/* Tier 4 Jharokhas */}
+            <rect x="170" y="100" width="20" height="26" rx="10" fill="#FFF1F2" stroke="#BE123C" strokeWidth="1.5" />
+            <rect x="210" y="100" width="20" height="26" rx="10" fill="#FFF1F2" stroke="#BE123C" strokeWidth="1.5" />
           </svg>
         );
 
       case 'shore_temple':
         return (
-          <svg viewBox="0 0 400 350" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full stroke-current">
-            {/* Coromandel Coast Waterline */}
-            <path d="M30 330 H370" strokeWidth="3" />
-            <path d="M40 340 Q90 332, 140 340 T240 340 T340 340" strokeWidth="1.5" />
-            {/* Main Vimana (Tower) */}
-            <path d="M120 330 H230 L210 240 L195 170 L185 110 L175 60 L165 110 L155 170 L140 240 Z" strokeWidth="2.5" />
-            {/* Kalasa Crown */}
-            <circle cx="175" cy="50" r="8" strokeWidth="2" />
-            <line x1="175" y1="42" x2="175" y2="30" strokeWidth="2" />
-            {/* Subsidiary Vimana */}
-            <path d="M230 330 H300 L285 270 L275 210 L265 160 L255 210 L245 270 Z" strokeWidth="2" />
-            <circle cx="265" cy="150" r="6" strokeWidth="1.5" />
-            {/* Mandapa base & stone nandi sculptures */}
-            <path d="M70 330 H120 V280 H70 Z" strokeWidth="2" />
-            <circle cx="95" cy="270" r="8" strokeWidth="1.5" />
-            <line x1="60" y1="330" x2="60" y2="310" strokeWidth="2" />
-            <line x1="330" y1="330" x2="330" y2="310" strokeWidth="2" />
+          <svg viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg" className="w-full h-full drop-shadow-xl">
+            <defs>
+              <linearGradient id="chennaiGranite" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#F59E0B" />
+                <stop offset="50%" stopColor="#D97706" />
+                <stop offset="100%" stopColor="#78350F" />
+              </linearGradient>
+              <linearGradient id="chennaiOcean" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stopColor="#0891B2" />
+                <stop offset="50%" stopColor="#0284C7" />
+                <stop offset="100%" stopColor="#0D9488" />
+              </linearGradient>
+              <linearGradient id="chennaiGold" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#FEF08A" />
+                <stop offset="100%" stopColor="#F59E0B" />
+              </linearGradient>
+            </defs>
+            {/* Bay of Bengal Ocean Shoreline */}
+            <path d="M10 335 Q60 325, 110 335 T210 335 T310 335 T390 335 V360 H10 Z" fill="url(#chennaiOcean)" />
+            <path d="M25 344 Q75 338, 125 344 T225 344 T325 344 V360 H25 Z" fill="#0E7490" opacity="0.7" />
+            {/* Beach Sands Base */}
+            <rect x="30" y="320" width="340" height="15" rx="3" fill="#B45309" />
+            {/* Main Vimana Pyramid Tower */}
+            <polygon points="120,320 230,320 215,240 200,170 190,110 175,55 160,110 150,170 135,240" fill="url(#chennaiGranite)" stroke="#78350F" strokeWidth="2" />
+            {/* Tier Horizontals */}
+            <line x1="135" y1="240" x2="215" y2="240" stroke="#FDE047" strokeWidth="3" />
+            <line x1="150" y1="170" x2="200" y2="170" stroke="#FDE047" strokeWidth="3" />
+            <line x1="160" y1="110" x2="190" y2="110" stroke="#FDE047" strokeWidth="3" />
+            {/* Kalasa Crown Finial */}
+            <circle cx="175" cy="45" r="9" fill="url(#chennaiGold)" stroke="#78350F" strokeWidth="2" />
+            <line x1="175" y1="36" x2="175" y2="24" stroke="#FDE047" strokeWidth="3" />
+            <circle cx="175" cy="22" r="3" fill="#FEF08A" />
+            {/* Subsidiary Vimana Tower */}
+            <polygon points="230,320 300,320 285,260 275,200 265,150 255,200 245,260" fill="url(#chennaiGranite)" stroke="#78350F" strokeWidth="1.5" />
+            <circle cx="265" cy="142" r="7" fill="url(#chennaiGold)" stroke="#78350F" strokeWidth="1.5" />
+            {/* Nandi Stone Sculptures at Periphery */}
+            <rect x="70" y="295" width="35" height="25" rx="4" fill="#92400E" />
+            <circle cx="95" cy="290" r="7" fill="#F59E0B" />
+            <circle cx="55" cy="310" r="5" fill="#F59E0B" />
+            <circle cx="335" cy="310" r="5" fill="#F59E0B" />
           </svg>
         );
 
@@ -217,25 +383,25 @@ export function RegionalHeritageWatermark({ cityId = 'delhi' }) {
     switch (heritage.patternType) {
       case 'warli_maritime':
         return (
-          <div className="flex justify-around items-center opacity-30 text-sky-900 py-1 border-b border-sky-200/40">
+          <div className="flex justify-around items-center opacity-85 text-sky-800 py-1.5 border-b border-sky-300/60 bg-sky-50/50 backdrop-blur-xs">
             {[...Array(12)].map((_, i) => (
-              <span key={i} className="text-xs font-mono select-none">▲●▼ ⚲ ♒</span>
+              <span key={i} className="text-xs font-mono font-bold select-none text-sky-700">▲●▼ ⚲ ♒ ⛵</span>
             ))}
           </div>
         );
       case 'kolam_geometric':
         return (
-          <div className="flex justify-around items-center opacity-30 text-indigo-900 py-1 border-b border-indigo-200/40">
+          <div className="flex justify-around items-center opacity-85 text-indigo-800 py-1.5 border-b border-indigo-300/60 bg-indigo-50/50 backdrop-blur-xs">
             {[...Array(10)].map((_, i) => (
-              <span key={i} className="text-xs font-mono select-none">❖ ✦ ◈ ✦ ❖</span>
+              <span key={i} className="text-xs font-mono font-bold select-none text-indigo-700">❖ ✦ ◈ ✦ ❖</span>
             ))}
           </div>
         );
       case 'alpana_terracotta':
         return (
-          <div className="flex justify-around items-center opacity-30 text-rose-900 py-1 border-b border-rose-200/40">
+          <div className="flex justify-around items-center opacity-85 text-rose-800 py-1.5 border-b border-rose-300/60 bg-rose-50/50 backdrop-blur-xs">
             {[...Array(10)].map((_, i) => (
-              <span key={i} className="text-xs font-mono select-none">❀ ꕤ ❁ ꕤ ❀</span>
+              <span key={i} className="text-xs font-mono font-bold select-none text-rose-700">❀ ꕤ ❁ ꕤ ❀</span>
             ))}
           </div>
         );
@@ -243,9 +409,9 @@ export function RegionalHeritageWatermark({ cityId = 'delhi' }) {
       case 'chikankari_paisley':
       default:
         return (
-          <div className="flex justify-around items-center opacity-25 text-amber-900 py-1 border-b border-amber-200/40">
+          <div className="flex justify-around items-center opacity-85 text-amber-900 py-1.5 border-b border-amber-300/60 bg-amber-50/50 backdrop-blur-xs">
             {[...Array(10)].map((_, i) => (
-              <span key={i} className="text-xs font-mono select-none">❧ ❖ ❂ ❖ ❧</span>
+              <span key={i} className="text-xs font-mono font-bold select-none text-amber-800">❧ ❖ ❂ ❖ ❧</span>
             ))}
           </div>
         );
@@ -262,28 +428,29 @@ export function RegionalHeritageWatermark({ cityId = 'delhi' }) {
         {renderCulturalPatternBorder()}
       </div>
 
-      {/* Primary Light Monument Silhouette Watermark (Right-Bottom) */}
+      {/* Primary Vibrant Full-Color Architectural Watermark (Right-Bottom) */}
       <div 
-        className="absolute -right-12 bottom-16 sm:bottom-24 w-[340px] sm:w-[500px] md:w-[620px] lg:w-[720px] h-[300px] sm:h-[450px] md:h-[550px] opacity-[0.05] sm:opacity-[0.07] text-monsoon-900 transition-transform duration-1000 transform hover:scale-105"
-        style={{ color: heritage.accentColor }}
+        className="absolute -right-8 bottom-12 sm:bottom-20 w-[360px] sm:w-[520px] md:w-[650px] lg:w-[760px] h-[320px] sm:h-[460px] md:h-[580px] opacity-[0.28] sm:opacity-[0.36] hover:opacity-[0.50] transition-opacity duration-700 filter drop-shadow-2xl"
       >
         {renderMonumentSvg()}
       </div>
 
-      {/* Secondary Mirrored Soft Motif (Left-Top) */}
+      {/* Secondary Mirrored Soft Accent (Left-Top) */}
       <div 
-        className="absolute -left-20 top-28 w-[280px] sm:w-[420px] h-[260px] sm:h-[380px] opacity-[0.03] sm:opacity-[0.04] text-monsoon-800"
-        style={{ color: heritage.accentColor }}
+        className="absolute -left-16 top-24 w-[280px] sm:w-[420px] h-[260px] sm:h-[380px] opacity-[0.16] sm:opacity-[0.22] transition-opacity duration-700 filter drop-shadow-lg"
       >
         {renderMonumentSvg()}
       </div>
 
-      {/* Subtle regional folklore watermark stamp */}
-      <div className="absolute left-6 bottom-6 opacity-[0.08] sm:opacity-[0.12] hidden md:block max-w-sm">
-        <p className="text-[11px] font-mono tracking-widest uppercase font-bold text-monsoon-700">
-          🏛️ {heritage.region} • {heritage.monumentName}
-        </p>
-        <p className="text-[10px] font-serif italic text-monsoon-600 mt-0.5">
+      {/* Legible Regional Heritage Cultural Seal (Bottom-Left) */}
+      <div className="absolute left-6 bottom-6 opacity-90 hidden md:block max-w-sm bg-white/85 backdrop-blur-md border border-amber-300/80 p-3 rounded-2xl shadow-md">
+        <div className="flex items-center gap-2">
+          <span className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse"></span>
+          <p className="text-[11px] font-mono tracking-wider uppercase font-black text-amber-950">
+            🏛️ {heritage.region} • {heritage.monumentName}
+          </p>
+        </div>
+        <p className="text-[11px] font-serif italic text-monsoon-700 mt-1 font-semibold leading-snug">
           {heritage.traditionalFolkProverb}
         </p>
       </div>
